@@ -1,0 +1,8 @@
+*.elc
+recentf
+custom.el
+backup/
+auto-save-list/
+transient/
+elpa/
+.cache/
