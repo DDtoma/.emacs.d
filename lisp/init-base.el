@@ -38,8 +38,8 @@ If the new path's directories does not exist, create them."
     (w32-register-hot-key [s-t]))
    ((and sys/macp (eq window-system 'mac))
     ;; Compatible with Emacs Mac port
-    (setq mac-option-modifier 'meta
-          mac-command-modifier 'super)
+    (setq mac-option-modifier 'super
+          mac-command-modifier 'meta)
     (bind-keys ([(super a)] . mark-whole-buffer)
                ([(super c)] . kill-ring-save)
                ([(super l)] . goto-line)
@@ -65,8 +65,6 @@ If the new path's directories does not exist, create them."
                                 "undo-tree-hist"
                                 "url"
                                 "COMMIT_EDITMSG\\'")))
-
-(global-unset-key (kbd "C-j"))
 
 (use-package treemacs
   :bind (("C-c t" . treemacs)))
@@ -109,6 +107,11 @@ If the new path's directories does not exist, create them."
   (prog-mode . turn-on-smartparens-strict-mode)
   )
 
-
+;; Fullscreen
+;; WORKAROUND: To address blank screen issue with child-frame in fullscreen
+(when (and sys/mac-x-p emacs/>=26p)
+  (setq ns-use-native-fullscreen nil))
+(bind-keys ("C-<f11>" . toggle-frame-fullscreen)
+           ("C-s-f" . toggle-frame-fullscreen))
 
 (provide 'init-base)
