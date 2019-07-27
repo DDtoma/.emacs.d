@@ -3,7 +3,7 @@
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
-(setq package-list '(use-package smartparens diff-hl magit ag fzf counsel swiper ivy lsp-treemacs lsp-ui company-lsp company lsp-mode kaolin-themes bind-key modern-cpp-font-lock exec-path-from-shell yasnippet company-prescient company-box))
+(setq package-list '(use-package smartparens diff-hl magit ag fzf counsel swiper ivy lsp-treemacs lsp-ui company-lsp company lsp-mode kaolin-themes bind-key modern-cpp-font-lock exec-path-from-shell yasnippet company-prescient company-box easy-kill-extras))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -21,10 +21,12 @@
 
 (require 'init-const)
 (require 'init-base)
+(require 'init-kill)
 (require 'init-keymap)
 (require 'init-ui)
 (require 'init-completion)
+(require 'init-lsp)
 (require 'init-git)
 
-
+;; Language
 (require 'init-c)
