@@ -146,5 +146,10 @@
   ;;     (company-quickhelp-mode 1)))
   )
 
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :hook (after-init . yas-global-mode)
+  :config (use-package yasnippet-snippets))
+
 
 (provide 'init-completion)

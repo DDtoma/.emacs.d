@@ -1,5 +1,5 @@
 (use-package lsp-mode
-     :diminish lsp-mode
+;;     :diminish lsp-mode
      :hook (prog-mode . lsp-deferred)
      :bind (:map lsp-mode-map
             ("C-c C-d" . lsp-describe-thing-at-point))

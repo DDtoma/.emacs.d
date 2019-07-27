@@ -16,7 +16,7 @@
 		     ;; lsp
 		     lsp-treemacs lsp-ui lsp-mode
 		     ;; Company
-		     company company-lsp yasnippet company-prescient company-box
+		     company company-lsp company-prescient company-box yasnippet yasnippet-snippets
 		     ;; Theme UI
 		     kaolin-themes
 		     ;; Language
