@@ -1,6 +1,6 @@
 
 ;; set default font size
-(set-face-attribute 'default nil :height 180)
+(set-face-attribute 'default nil :height 150)
 
 (tool-bar-mode 0)
 (scroll-bar-mode 0)

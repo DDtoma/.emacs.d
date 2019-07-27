@@ -3,7 +3,7 @@
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
-(setq package-list '(use-package smartparens diff-hl magit ag fzf counsel swiper ivy lsp-treemacs lsp-ui company-lsp company lsp-mode kaolin-themes bind-key modern-cpp-font-lock))
+(setq package-list '(use-package smartparens diff-hl magit ag fzf counsel swiper ivy lsp-treemacs lsp-ui company-lsp company lsp-mode kaolin-themes bind-key modern-cpp-font-lock exec-path-from-shell yasnippet company-prescient company-box))
 
 (unless package-archive-contents
   (package-refresh-contents))
