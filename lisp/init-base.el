@@ -94,7 +94,8 @@ If the new path's directories does not exist, create them."
   :init
   (global-unset-key (kbd "C-j"))
   :bind
-  (("C-x f" . counsel-fzf)
+  (("C-c s f" . counsel-fzf)
+   ("C-c s a" . counsel-ag)
    ("C-c C-r" . counsel-recentf)
    ("C-x C-b" . counsel-ibuffer))
   )
