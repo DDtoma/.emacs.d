@@ -18,6 +18,54 @@ If the new path's directories does not exist, create them."
 
 (setq make-backup-file-name-function 'my-backup-file-name)
 
+;; Environment
+(when (or sys/mac-x-p sys/linux-x-p)
+  (use-package exec-path-from-shell
+    :init
+    (setq exec-path-from-shell-check-startup-files nil
+          exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH")
+          exec-path-from-shell-arguments '("-l" "-i"))
+    (exec-path-from-shell-initialize)))
+
+;; Key Modifiers
+(with-no-warnings
+  (cond
+   (sys/win32p
+    ;; make PC keyboard's Win key or other to type Super or Hyper
+    ;; (setq w32-pass-lwindow-to-system nil)
+    (setq w32-lwindow-modifier 'super     ; Left Windows key
+          w32-apps-modifier 'hyper)       ; Menu/App key
+    (w32-register-hot-key [s-t]))
+   ((and sys/macp (eq window-system 'mac))
+    ;; Compatible with Emacs Mac port
+    (setq mac-option-modifier 'meta
+          mac-command-modifier 'super)
+    (bind-keys ([(super a)] . mark-whole-buffer)
+               ([(super c)] . kill-ring-save)
+               ([(super l)] . goto-line)
+               ([(super q)] . save-buffers-kill-emacs)
+               ([(super s)] . save-buffer)
+               ([(super v)] . yank)
+               ([(super w)] . delete-frame)
+               ([(super z)] . undo)))))
+
+(use-package recentf
+  :ensure nil
+  :hook (after-init . recentf-mode)
+  :init (setq recentf-max-saved-items 200
+              recentf-exclude '((expand-file-name package-user-dir)
+                                ".cache"
+                                ".cask"
+                                ".elfeed"
+                                "bookmarks"
+                                "cache"
+                                "ido.*"
+                                "persp-confs"
+                                "recentf"
+                                "undo-tree-hist"
+                                "url"
+                                "COMMIT_EDITMSG\\'")))
+
 (global-unset-key (kbd "C-j"))
 
 (use-package treemacs
@@ -54,7 +102,7 @@ If the new path's directories does not exist, create them."
   )
 
 (use-package smartparens
-  :init 
+  :init
   (show-smartparens-global-mode t)
   (sp-local-pair '(emacs-lisp-mode) "'" "'" :actions nil)
   :hook
