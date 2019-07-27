@@ -1,4 +1,4 @@
-
+;;(global-display-line-numbers-mode)
 ;; set default font size
 (set-face-attribute 'default nil :height 150)
 
