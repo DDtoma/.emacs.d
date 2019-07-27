@@ -76,8 +76,8 @@ If the new path's directories does not exist, create them."
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   :bind
-  (("C-c c" . avy-goto-char)
-   ("C-c l" . avy-goto-line))
+  (("C-x c" . avy-goto-char)
+   ("C-x l" . avy-goto-line))
   )
 
 (use-package all-the-icons-ivy
@@ -94,7 +94,7 @@ If the new path's directories does not exist, create them."
   :init
   (global-unset-key (kbd "C-j"))
   :bind
-  (("C-c f" . counsel-fzf)
+  (("C-x f" . counsel-fzf)
    ("C-c C-r" . counsel-recentf)
    ("C-x C-b" . counsel-ibuffer))
   )
