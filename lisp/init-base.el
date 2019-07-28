@@ -6,10 +6,10 @@
   "Return a new file path of a given file path.
 If the new path's directories does not exist, create them."
   (let* (
-        (backupRootDir "~/.emacs.d/backup/")
-        (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, for example, “C:”
-        (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
-        )
+	(backupRootDir "~/.emacs.d/backup/")
+	(filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, for example, “C:”
+	(backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
+	)
     (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
     backupFilePath
   )
@@ -22,8 +22,8 @@ If the new path's directories does not exist, create them."
   (use-package exec-path-from-shell
     :init
     (setq exec-path-from-shell-check-startup-files nil
-          exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH")
-          exec-path-from-shell-arguments '("-l" "-i"))
+	  exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH")
+	  exec-path-from-shell-arguments '("-l" "-i"))
     (exec-path-from-shell-initialize)))
 
 ;; Key Modifiers
@@ -33,37 +33,37 @@ If the new path's directories does not exist, create them."
     ;; make PC keyboard's Win key or other to type Super or Hyper
     ;; (setq w32-pass-lwindow-to-system nil)
     (setq w32-lwindow-modifier 'super     ; Left Windows key
-          w32-apps-modifier 'hyper)       ; Menu/App key
+	  w32-apps-modifier 'hyper)       ; Menu/App key
     (w32-register-hot-key [s-t]))
    ((and sys/macp (eq window-system 'mac))
     ;; Compatible with Emacs Mac port
     (setq mac-option-modifier 'super
-          mac-command-modifier 'meta)
+	  mac-command-modifier 'meta)
     (bind-keys ([(super a)] . mark-whole-buffer)
-               ([(super c)] . kill-ring-save)
-               ([(super l)] . goto-line)
-               ([(super q)] . save-buffers-kill-emacs)
-               ([(super s)] . save-buffer)
-               ([(super v)] . yank)
-               ([(super w)] . delete-frame)
-               ([(super z)] . undo)))))
+	       ([(super c)] . kill-ring-save)
+	       ([(super l)] . goto-line)
+	       ([(super q)] . save-buffers-kill-emacs)
+	       ([(super s)] . save-buffer)
+	       ([(super v)] . yank)
+	       ([(super w)] . delete-frame)
+	       ([(super z)] . undo)))))
 
 (use-package recentf
   :ensure nil
   :hook (after-init . recentf-mode)
   :init (setq recentf-max-saved-items 200
-              recentf-exclude '((expand-file-name package-user-dir)
-                                ".cache"
-                                ".cask"
-                                ".elfeed"
-                                "bookmarks"
-                                "cache"
-                                "ido.*"
-                                "persp-confs"
-                                "recentf"
-                                "undo-tree-hist"
-                                "url"
-                                "COMMIT_EDITMSG\\'")))
+	      recentf-exclude '((expand-file-name package-user-dir)
+				".cache"
+				".cask"
+				".elfeed"
+				"bookmarks"
+				"cache"
+				"ido.*"
+				"persp-confs"
+				"recentf"
+				"undo-tree-hist"
+				"url"
+				"COMMIT_EDITMSG\\'")))
 
 (use-package windmove
   :config
@@ -96,7 +96,7 @@ If the new path's directories does not exist, create them."
   :hook
   (dired-mode . my-dired-init)
   )
-  
+
 
 (use-package ivy
   :ensure t
@@ -150,6 +150,6 @@ If the new path's directories does not exist, create them."
 (when (and sys/mac-x-p emacs/>=26p)
   (setq ns-use-native-fullscreen nil))
 (bind-keys ("C-<f11>" . toggle-frame-fullscreen)
-           ("C-s-f" . toggle-frame-fullscreen))
+	   ("C-s-f" . toggle-frame-fullscreen))
 
 (provide 'init-base)
