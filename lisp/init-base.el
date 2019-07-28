@@ -119,6 +119,14 @@ If the new path's directories does not exist, create them."
   (("\C-s" . swiper))
   )
 
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-completion-system 'ivy)
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (projectile-mode +1))
+
 (use-package counsel
   :init
   (global-unset-key (kbd "C-j"))
