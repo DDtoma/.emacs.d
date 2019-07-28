@@ -1,3 +1,17 @@
+(if (display-graphic-p)
+    (progn
+      (setq initial-frame-alist
+	    '((width . 120)
+	      (height . 60)
+	      (left . 70)
+	      (top . 30)))
+      (setq default-frame-alist
+	    '((width . 120)
+	      (height . 60)
+	      (left . 70)
+	      (left . 30)))))
+
+
 ;;(global-display-line-numbers-mode)
 ;; set default font size
 (set-face-attribute 'default nil :height 150)
