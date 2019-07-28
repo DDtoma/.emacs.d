@@ -65,9 +65,6 @@ If the new path's directories does not exist, create them."
                                 "url"
                                 "COMMIT_EDITMSG\\'")))
 
-(use-package treemacs
-  :bind (("C-c t" . treemacs)))
-
 (use-package ivy
   :ensure t
   :init
