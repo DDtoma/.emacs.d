@@ -65,6 +65,10 @@ If the new path's directories does not exist, create them."
                                 "url"
                                 "COMMIT_EDITMSG\\'")))
 
+(use-package windmove
+  :config
+  (windmove-default-keybindings))
+
 (use-package ivy
   :ensure t
   :init
