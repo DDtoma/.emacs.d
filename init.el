@@ -1,6 +1,6 @@
 (require 'package)
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
 (setq package-list '(
@@ -39,9 +39,9 @@
 
 ;; Base
 (require 'init-const)
+(require 'init-fun)
 (require 'init-base)
 (require 'init-kill)
-(require 'init-keymap)
 (require 'init-ui)
 
 ;; Completion
@@ -53,3 +53,5 @@
 
 ;; Language
 (require 'init-c)
+
+(require 'init-keymap)
