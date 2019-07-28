@@ -16,8 +16,30 @@
 
 (use-package kaolin-themes
   :config
-  (load-theme 'kaolin-dark t)
+  (load-theme 'kaolin-light t)
   ;;(kaolin-treemacs-theme)
   )
+
+;; (use-package whitespace
+;;   :init
+;;   (dolist (hook '(prog-mode-hook text-mode-hook))
+;;     (add-hook hook #'whitespace-mode))
+;;   (add-hook 'before-save-hook #'whitespace-cleanup)
+;;   (setq whitespace-display-mappings
+;;         ;; all numbers are unicode codepoint in decimal. e.g. (insert-char 182 1)
+;;         '(
+;;           (space-mark 32 [183] [46]) ; SPACE 32 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+;;           (newline-mark 10 [182 10]) ; LINE FEED,
+;;           (tab-mark 9 [9655 9] [92 9]) ; tab
+;;	  ))
+;;   :config
+;;   (setq whitespace-line-column 80) ;; limit line length
+;;   (setq whitespace-style '(face spaces tabs newline space-mark tab-mark newline-mark))
+;;   )
+
+(use-package whitespace
+  :ensure t
+  :init
+  (add-hook 'before-save-hook #'whitespace-cleanup))
 
 (provide 'init-ui)

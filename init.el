@@ -8,7 +8,7 @@
 		     use-package
 		     bind-key exec-path-from-shell dired-single
 		     ;; Edit
-		     smartparens easy-kill-extras
+		     smartparens easy-kill-extras whitespace
 		     ;; Git
 		     magit diff-hl
 		     ;; Search
