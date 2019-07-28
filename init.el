@@ -6,7 +6,7 @@
 (setq package-list '(
 		     ;; Base
 		     use-package
-		     bind-key exec-path-from-shell
+		     bind-key exec-path-from-shell dired-single
 		     ;; Edit
 		     smartparens easy-kill-extras
 		     ;; Git

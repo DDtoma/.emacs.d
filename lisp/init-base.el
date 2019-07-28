@@ -69,6 +69,35 @@ If the new path's directories does not exist, create them."
   :config
   (windmove-default-keybindings))
 
+;; http://lifegoo.pluskid.org/wiki/EnhanceDired.html
+(use-package dired
+  :config
+  ;; dired - reuse current buffer by pressing 'a'
+  (put 'dired-find-alternate-file 'disabled nil)
+
+  ;; always delete and copy recursively
+  (setq dired-recursive-deletes 'always)
+  (setq dired-recursive-copies 'always)
+
+  ;; if there is a dired buffer displayed in the next window, use its
+  ;; current subdir, instead of the current subdir of this dired buffer
+  (setq dired-dwim-target t)
+
+  ;; enable some really cool extensions like C-x C-j(dired-jump)
+  (require 'dired-x))
+
+(use-package dired-single
+  :ensure t
+  :init
+  (defun my-dired-init ()
+    (define-key dired-mode-map [return] 'dired-single-buffer)
+    (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
+    (define-key dired-mode-map "^" 'dired-single-up-directory))
+  :hook
+  (dired-mode . my-dired-init)
+  )
+  
+
 (use-package ivy
   :ensure t
   :init
