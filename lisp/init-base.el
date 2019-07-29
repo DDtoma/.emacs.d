@@ -105,6 +105,27 @@ If the new path's directories does not exist, create them."
     (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy--buffer-transformer))
   )
 
+(use-package ivy-rich
+  :ensure t
+  :init
+  (ivy-rich-mode 1)
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  ;; For better performance
+  (setq ivy-rich-parse-remote-buffer nil)
+
+  ;; Setting tab size to 1, to insert tabs as delimiters
+  (add-hook 'minibuffer-setup-hook
+	    (lambda ()
+	      (setq tab-width 1)))
+  :bind
+  ("M-x" . counsel-M-x)
+  (:map llight//global-map
+	("b b" . ivy-switch-buffer)
+	("f r" . counsel-recentf)
+	("f b" . counsel-bookmark)
+	("x" . counsel-M-x))
+  )
+
 (use-package swiper
   :bind
   (("\C-s" . swiper))
@@ -126,8 +147,7 @@ If the new path's directories does not exist, create them."
   (:map llight//global-map
 	("s f" . counsel-fzf)
 	("s a" . counsel-ag)
-	("f r" . counsel-recentf)
-	("b b" . counsel-ibuffer))
+	("f r" . counsel-recentf))
   )
 
 (use-package helpful
