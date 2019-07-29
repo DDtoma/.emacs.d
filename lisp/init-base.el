@@ -1,5 +1,6 @@
 ;; define my global key map
 (define-prefix-command 'llight//global-map)
+(global-set-key (kbd "M-m") llight//global-map)
 
 ;; Buackup
 ;; (setq make-backup-files nil)

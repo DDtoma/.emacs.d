@@ -22,7 +22,24 @@
 
 ;; S-shift s-super m-meta <delete>
 (global-set-key (kbd "M-|") 'llight//delete-blank-lines)
-(define-key llight//global-map (kbd "b k") 'kill-this-buffer)
 
-(global-set-key (kbd "M-m") llight//global-map)
+;; build-in commad
+;;;; file command
+(define-key llight//global-map (kbd "f f") 'find-file)
+(define-key llight//global-map (kbd "f R") 'find-file-read-only)
+(define-key llight//global-map (kbd "f s") 'save-buffer)
+(define-key llight//global-map (kbd "f S") 'save-some-buffers)
+(define-key llight//global-map (kbd "d") 'dired)
+
+;;;; buffer command
+(define-key llight//global-map (kbd "b k") 'kill-this-buffer)
+(define-key llight//global-map (kbd "b B") 'ibuffer)
+
+;;;; help command
+(define-key llight//global-map (kbd "h k") 'describe-key)
+(define-key llight//global-map (kbd "h f") 'describe-function)
+
+;;;; emacs operation
+(define-key llight//global-map (kbd "q q") 'save-buffers-kill-terminal)
+
 (provide 'init-keymap)
