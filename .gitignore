@@ -8,3 +8,4 @@ elpa/
 .cache/
 .lsp-session-v1
 projectile-bookmarks.eld
+.mc-lists.el

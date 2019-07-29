@@ -88,7 +88,6 @@ If the new path's directories does not exist, create them."
     )
   )
 
-
 (use-package ivy
   :ensure t
   :init
@@ -129,14 +128,6 @@ If the new path's directories does not exist, create them."
 	("s a" . counsel-ag)
 	("f r" . counsel-recentf)
 	("b b" . counsel-ibuffer))
-  )
-
-(use-package smartparens
-  :init
-  (show-smartparens-global-mode t)
-  (sp-local-pair '(emacs-lisp-mode) "'" "'" :actions nil)
-  :hook
-  (prog-mode . turn-on-smartparens-strict-mode)
   )
 
 (use-package helpful

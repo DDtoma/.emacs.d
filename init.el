@@ -8,7 +8,7 @@
 		     use-package
 		     bind-key exec-path-from-shell dired-single helpful
 		     ;; Edit
-		     smartparens easy-kill-extras whitespace
+		     smartparens easy-kill-extras whitespace multiple-cursors
 		     ;; Git
 		     magit diff-hl
 		     ;; Search
@@ -41,7 +41,7 @@
 (require 'init-const)
 (require 'init-fun)
 (require 'init-base)
-(require 'init-kill)
+(require 'init-edit)
 (require 'init-ui)
 
 ;; Completion
