@@ -9,15 +9,15 @@
 	    '((width . 120)
 	      (height . 60)
 	      (left . 70)
-	      (left . 30)))))
+	      (left . 30)))
+      (tool-bar-mode 0)
+      (scroll-bar-mode 0)))
 
 
 ;;(global-display-line-numbers-mode)
 ;; set default font size
 (set-face-attribute 'default nil :height 150)
-
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+;; close welcome screen
 (setq inhibit-splash-screen t)
 
 (use-package doom-modeline
@@ -30,7 +30,9 @@
 
 (use-package kaolin-themes
   :config
-  (load-theme 'kaolin-light t)
+  (if (display-graphic-p)
+      (load-theme 'kaolin-light t)
+      )
   ;;(kaolin-treemacs-theme)
   )
 
