@@ -21,6 +21,8 @@
 	       ([(super z)] . undo)))))
 
 ;; S-shift s-super m-meta <delete>
-(global-set-key (kbd "s-\\") 'llight//delete-blank-lines)
-(global-set-key (kbd "C-c k") 'kill-this-buffer)
+(global-set-key (kbd "M-|") 'llight//delete-blank-lines)
+(define-key llight//global-map (kbd "b k") 'kill-this-buffer)
+
+(global-set-key (kbd "M-m") llight//global-map)
 (provide 'init-keymap)

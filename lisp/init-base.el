@@ -1,7 +1,10 @@
+;; define my global key map
+(define-prefix-command 'llight//global-map)
+
+;; Buackup
 ;; (setq make-backup-files nil)
 ;; (setq auto-save-default nil)
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
-
 (defun my-backup-file-name (fpath)
   "Return a new file path of a given file path.
 If the new path's directories does not exist, create them."
@@ -14,7 +17,6 @@ If the new path's directories does not exist, create them."
     backupFilePath
   )
   )
-
 (setq make-backup-file-name-function 'my-backup-file-name)
 
 ;; Environment
@@ -47,6 +49,15 @@ If the new path's directories does not exist, create them."
 (use-package windmove
   :config
   (windmove-default-keybindings))
+
+(use-package ace-window
+  :ensure t
+  :init
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind
+  (:map llight//global-map
+	("w" . ace-window))
+  )
 
 ;; http://lifegoo.pluskid.org/wiki/EnhanceDired.html
 (use-package dired
@@ -84,8 +95,9 @@ If the new path's directories does not exist, create them."
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   :bind
-  (("C-x c" . avy-goto-char)
-   ("C-x l" . avy-goto-line))
+  (:map llight//global-map
+	("j j" . avy-goto-char)
+	("j l" . avy-goto-line))
   :config
   (use-package all-the-icons-ivy
     :ensure t
@@ -103,17 +115,19 @@ If the new path's directories does not exist, create them."
   :init
   (setq projectile-completion-system 'ivy)
   :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (projectile-mode +1))
+;;  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (projectile-mode +1)
+  :bind
+  (:map llight//global-map
+	("p" . projectile-command-map)))
 
 (use-package counsel
-  :init
-  (global-unset-key (kbd "C-j"))
   :bind
-  (("C-c s f" . counsel-fzf)
-   ("C-c s a" . counsel-ag)
-   ("C-c C-r" . counsel-recentf)
-   ("C-x C-b" . counsel-ibuffer))
+  (:map llight//global-map
+	("s f" . counsel-fzf)
+	("s a" . counsel-ag)
+	("f r" . counsel-recentf)
+	("b b" . counsel-ibuffer))
   )
 
 (use-package smartparens
@@ -123,6 +137,20 @@ If the new path's directories does not exist, create them."
   :hook
   (prog-mode . turn-on-smartparens-strict-mode)
   )
+
+(use-package helpful
+  :defines ivy-initial-inputs-alist
+  :bind
+  (:map llight//global-map
+	("h p" . helpful-at-point))
+  :config
+  (with-eval-after-load 'ivy
+    (dolist (cmd '(helpful-callable
+		   helpful-variable
+		   helpful-function
+		   helpful-macro
+		   helpful-command))
+      (cl-pushnew `(,cmd . "^") ivy-initial-inputs-alist))))
 
 ;; Fullscreen
 ;; WORKAROUND: To address blank screen issue with child-frame in fullscreen

@@ -5,8 +5,9 @@
   )
 
 (use-package magit
-  :bind(
-	("C-x g" . magit-status)))
+  :bind
+  (:map llight//global-map
+	("g" . magit-status)))
 
 
 (provide 'init-git)
