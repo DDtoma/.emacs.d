@@ -6,7 +6,7 @@
 (setq package-list '(
 		     ;; Base
 		     use-package
-		     bind-key exec-path-from-shell dired-single helpful
+		     bind-key exec-path-from-shell dired-single helpful which-key
 		     ;; Edit
 		     smartparens easy-kill-extras whitespace multiple-cursors
 		     ;; Git
@@ -50,6 +50,7 @@
 
 ;; Tools
 (require 'init-git)
+(require 'init-tools)
 
 ;; Language
 (require 'init-c)
