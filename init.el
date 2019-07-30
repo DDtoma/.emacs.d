@@ -21,6 +21,8 @@
 		     kaolin-themes
 		     ;; Language
 		     modern-cpp-font-lock
+		     ;;;; Java
+		     lsp-java dap-mode
 		     ))
 
 (unless package-archive-contents

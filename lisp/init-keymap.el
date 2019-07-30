@@ -34,6 +34,7 @@
 ;;;; buffer command
 (define-key llight//global-map (kbd "b k") 'kill-this-buffer)
 (define-key llight//global-map (kbd "b B") 'ibuffer)
+(define-key llight//global-map (kbd "b K") 'kill-some-buffers)
 
 ;;;; help command
 (define-key llight//global-map (kbd "h k") 'describe-key)
