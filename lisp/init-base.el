@@ -143,6 +143,9 @@ If the new path's directories does not exist, create them."
 	("p" . projectile-command-map)))
 
 (use-package counsel
+  :init
+  (when (commandp 'counsel-M-x)
+    (global-set-key [remap execute-extended-command] #'counsel-M-x))
   :bind
   (:map llight//global-map
 	("s f" . counsel-fzf)
