@@ -119,12 +119,10 @@ If the new path's directories does not exist, create them."
 	    (lambda ()
 	      (setq tab-width 1)))
   :bind
-  ("M-x" . counsel-M-x)
   (:map llight//global-map
 	("b b" . ivy-switch-buffer)
-	("f r" . counsel-recentf)
-	("f b" . counsel-bookmark)
-	("x" . counsel-M-x))
+	("X" . ivy-resume)
+	)
   )
 
 (use-package swiper
@@ -148,10 +146,13 @@ If the new path's directories does not exist, create them."
   (when (commandp 'counsel-M-x)
     (global-set-key [remap execute-extended-command] #'counsel-M-x))
   :bind
+  ("M-x" . counsel-M-x)
   (:map llight//global-map
 	("s f" . counsel-fzf)
 	("s a" . counsel-ag)
-	("f r" . counsel-recentf))
+	("f r" . counsel-recentf)
+	("f b" . counsel-bookmark)
+	("x" . counsel-M-x))
   )
 
 (use-package helpful

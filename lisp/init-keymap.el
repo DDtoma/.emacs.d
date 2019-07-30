@@ -33,12 +33,14 @@
 
 ;;;; buffer command
 (define-key llight//global-map (kbd "b k") 'kill-this-buffer)
-(define-key llight//global-map (kbd "b B") 'ibuffer)
 (define-key llight//global-map (kbd "b K") 'kill-some-buffers)
+(define-key llight//global-map (kbd "b B") 'ibuffer)
 
 ;;;; help command
 (define-key llight//global-map (kbd "h k") 'describe-key)
 (define-key llight//global-map (kbd "h f") 'describe-function)
+(define-key llight//global-map (kbd "h v") 'describe-variable)
+(define-key llight//global-map (kbd "h s") 'describe-symbol)
 
 ;;;; emacs operation
 (define-key llight//global-map (kbd "q q") 'save-buffers-kill-terminal)
