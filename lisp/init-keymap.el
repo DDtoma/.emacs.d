@@ -24,6 +24,8 @@
 (global-set-key (kbd "M-|") 'llight//delete-blank-lines)
 
 ;; build-in commad
+;;;; edit
+(bind-key "C-h" 'delete-backward-char)
 ;;;; file command
 (define-key llight//global-map (kbd "f f") 'find-file)
 (define-key llight//global-map (kbd "f R") 'find-file-read-only)

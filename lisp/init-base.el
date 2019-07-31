@@ -3,6 +3,16 @@
 (global-set-key (kbd "M-m") llight//global-map)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; auto pair
+;;; http://ergoemacs.org/emacs/emacs_insert_brackets_by_pair.html
+(electric-pair-mode 1)
+(setq electric-pair-pairs '(
+			    (?\{ . ?\})
+			    (?\< . ?\>)
+			    ))
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis)
+
 ;; Buackup
 ;; (setq make-backup-files nil)
 ;; (setq auto-save-default nil)
