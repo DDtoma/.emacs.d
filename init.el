@@ -41,7 +41,7 @@
 
 ;; Base
 (require 'init-const)
-(require 'init-fun)
+(require 'init-func)
 (require 'init-base)
 (require 'init-edit)
 (require 'init-ui)
