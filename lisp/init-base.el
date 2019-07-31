@@ -95,10 +95,6 @@ If the new path's directories does not exist, create them."
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
-  :bind
-  (:map llight//global-map
-	("j j" . avy-goto-char)
-	("j l" . avy-goto-line))
   :config
   (use-package all-the-icons-ivy
     :ensure t

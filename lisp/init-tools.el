@@ -6,4 +6,12 @@
   :hook (after-init . which-key-mode)
   )
 
+(use-package avy
+  :ensure t
+  :bind
+  (:map llight//global-map
+	("j j" . avy-goto-char)
+	("j l" . avy-goto-line)))
+
+
 (provide 'init-tools)
