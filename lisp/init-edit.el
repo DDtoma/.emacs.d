@@ -5,7 +5,11 @@
   (define-key mc/keymap (kbd "<return>") nil)
   (setq mc/cmds-to-run-for-all
 	'(
+	  sp-kill-hybrid-sexp
 	  sp-rewrap-sexp
+	  easy-mark-sexp
+	  sp-unwrap-sexp
+	  electric-pair-delete-pair
 	  ))
   :bind
   ;;("C-S-c C-S-c" . mc/edit-lines)
@@ -13,17 +17,13 @@
   ("C-<" . mc/mark-previous-like-this)
   ("C-c C-<" . mc/mark-all-like-this))
 
-;; (use-package smartparens
-;;   :init
-;;   ;; (show-smartparens-global-mode t)
-;;   (sp-local-pair '(emacs-lisp-mode) "'" "'" :actions nil)
-;;   ;; :hook
-;;   ;; (prog-mode . turn-on-smartparens-strict-mode)
-;;   :bind
-;;   (:map llight//global-map
-;;	("e p" . sp-rewrap-sexp))
-
-;;   )
+(use-package smartparens
+  :ensure t
+  :bind
+  ("C-c k" . sp-kill-hybrid-sexp)
+  ("C-c r" . sp-rewrap-sexp)
+  ("C-c d" . sp-unwrap-sexp)
+  )
 
 ;; https://github.com/leoliu/easy-kill
 ;; https://github.com/knu/easy-kill-extras.el
