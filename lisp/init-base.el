@@ -143,9 +143,16 @@ If the new path's directories does not exist, create them."
   :config
 ;;  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (projectile-mode +1)
+  )
+
+(use-package counsel-projectile
+  :ensure t
+  :init
+  (counsel-projectile-mode +1)
   :bind
   (:map llight//global-map
-	("p" . projectile-command-map)))
+	("p f" . counsel-projectile-find-file)
+	("p d" . counsel-projectile-find-dir)))
 
 (use-package counsel
   :init
@@ -158,6 +165,7 @@ If the new path's directories does not exist, create them."
 	("s a" . counsel-ag)
 	("f r" . counsel-recentf)
 	("f b" . counsel-bookmark)
+	("f f" . counsel-find-file)
 	("x" . counsel-M-x))
   )
 

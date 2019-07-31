@@ -58,4 +58,18 @@
   :init
   (add-hook 'before-save-hook #'whitespace-cleanup))
 
+
+(add-to-list 'load-path "~/.emacs.d/plugin/all-the-icons-ivy")
+(use-package all-the-icons-ivy
+  :ensure t
+  :config
+  (all-the-icons-ivy-setup)
+  (setq all-the-icons-ivy-file-commands
+	'(counsel-find-file
+	  counsel-file-jump
+	  counsel-recentf
+	  counsel-projectile-find-file
+	  counsel-projectile-find-dir)))
+
+
 (provide 'init-ui)

@@ -27,7 +27,7 @@
 ;;;; edit
 (bind-key "C-h" 'delete-backward-char)
 ;;;; file command
-(define-key llight//global-map (kbd "f f") 'find-file)
+;;(define-key llight//global-map (kbd "f f") 'find-file)
 (define-key llight//global-map (kbd "f R") 'find-file-read-only)
 (define-key llight//global-map (kbd "f s") 'save-buffer)
 (define-key llight//global-map (kbd "f S") 'save-some-buffers)
