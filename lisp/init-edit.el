@@ -61,4 +61,8 @@
 				(?t string-to-char-backward "")
 				(?T string-up-to-char-backward ""))))
 
+(use-package hungry-delete
+  :ensure t
+  :config (global-hungry-delete-mode))
+
 (provide 'init-edit)
