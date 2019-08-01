@@ -10,6 +10,8 @@
 	  easy-mark-sexp
 	  sp-unwrap-sexp
 	  electric-pair-delete-pair
+	  hungry-delete-backward
+	  hungry-delete-forward
 	  ))
   :bind
   ;;("C-S-c C-S-c" . mc/edit-lines)
@@ -62,6 +64,7 @@
 
 (use-package hungry-delete
   :ensure t
-  :config (global-hungry-delete-mode))
+  :bind
+  ("M-\\" . hungry-delete-backward))
 
 (provide 'init-edit)
