@@ -1,15 +1,9 @@
+;; setup frame size in system desktop
 (if (display-graphic-p)
     (progn
-      (setq initial-frame-alist
-	    '((width . 120)
-	      (height . 60)
-	      (left . 70)
-	      (top . 30)))
-      (setq default-frame-alist
-	    '((width . 120)
-	      (height . 60)
-	      (left . 70)
-	      (left . 30)))
+      (if (eq system-type 'windows-nt)
+	  (llight//set-windows-size-windows)
+	(llight//set-windows-size-unix))
       (tool-bar-mode 0)
       (scroll-bar-mode 0)))
 
