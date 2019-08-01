@@ -137,6 +137,10 @@
     (setq company-lsp-cache-candidates 'auto)
     )
 
+  ;; machine leaning auto completion
+  ;; home url: https://github.com/TommyX12/company-tabnine
+  ;; use github shell to downlaod bin command
+  ;; bin command in ~/.TabNine/{version}/{platform}
   (use-package company-tabnine
     :ensure t
     :config
