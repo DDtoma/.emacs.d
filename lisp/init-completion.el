@@ -31,6 +31,11 @@
 	company-show-numbers t
 	)
 
+  (setq company-frontends
+	'(company-tng-frontend
+	  company-pseudo-tooltip-frontend
+	  company-echo-metadata-frontend))
+
   ;; Better sorting and filtering
   (use-package company-prescient
     :init (company-prescient-mode 1))
