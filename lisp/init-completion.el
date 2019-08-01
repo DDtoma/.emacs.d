@@ -133,18 +133,20 @@
 
   (use-package company-lsp
     :init
-    (push 'company-lsp company-backends)
     (setq company-lsp-cache-candidates 'auto)
+    (setq company-lsp-async t)
+    (setq company-lsp-enable-snippet t)
+    (push 'company-lsp company-backends)
     )
 
   ;; machine leaning auto completion
   ;; home url: https://github.com/TommyX12/company-tabnine
   ;; use github shell to downlaod bin command
   ;; bin command in ~/.TabNine/{version}/{platform}
-  (use-package company-tabnine
-    :ensure t
-    :config
-    (add-to-list 'company-backends #'company-tabnine))
+  ;; (use-package company-tabnine
+  ;;   :ensure t
+  ;;   :config
+  ;;   (add-to-list 'company-backends #'company-tabnine))
 
   ;; Popup documentation for completion candidates
   (when (and (not emacs/>=26p) (display-graphic-p))
