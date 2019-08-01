@@ -25,7 +25,7 @@
 (use-package solarized-theme
   :config
   (if (display-graphic-p)
-      (load-theme 'solarized-dark)))
+      (load-theme 'solarized-dark t)))
 
 ;; (use-package whitespace
 ;;   :init
