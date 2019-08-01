@@ -152,6 +152,7 @@ If the new path's directories does not exist, create them."
   :bind
   ("M-x" . counsel-M-x)
   ("C-x C-f" . counsel-find-file)
+  ("M-y" . counsel-yank-pop)
   (:map llight//global-map
 	("s f" . counsel-fzf)
 	("s a" . counsel-ag)
