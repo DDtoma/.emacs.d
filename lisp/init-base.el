@@ -156,6 +156,10 @@ If the new path's directories does not exist, create them."
   (:map llight//global-map
 	("s f" . counsel-fzf)
 	("s a" . counsel-ag)
+	("s k" . counsel-ack)
+	("s c" . counsel-cd)
+	("s K" . counsel-describes)
+	("s e" . counsel-minor)
 	("f r" . counsel-recentf)
 	("f b" . counsel-bookmark)
 	("f f" . counsel-find-file)
@@ -169,7 +173,11 @@ If the new path's directories does not exist, create them."
   :bind
   (:map llight//global-map
 	("p f" . counsel-projectile-find-file)
-	("p d" . counsel-projectile-find-dir)))
+	("p d" . counsel-projectile-find-dir)
+	("p c" . counsel-projectile-switch-project)
+	("p s a" . counsel-projectile-ag)
+	("p s g" . counsel-projectile-grep)
+	))
 
 (use-package helpful
   :defines ivy-initial-inputs-alist
