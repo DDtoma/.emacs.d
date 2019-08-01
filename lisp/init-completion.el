@@ -9,7 +9,6 @@
 	 ("C-n" . company-select-next)
 	 ("<tab>" . company-complete-common-or-cycle)
 	 ("<backtab>" . my-company-yasnippet)
-	 ;; ("C-c C-y" . my-company-yasnippet)
 	 :map company-search-map
 	 ("C-p" . company-select-previous)
 	 ("C-n" . company-select-next))
@@ -25,23 +24,25 @@
 	company-idle-delay 0
 	company-echo-delay (if (display-graphic-p) nil 0)
 	company-minimum-prefix-length 2
-	company-require-match nil
+	;; company-require-match nil
 	company-dabbrev-ignore-case nil
 	company-dabbrev-downcase nil
 	company-show-numbers t
 	)
 
-  (setq company-frontends
-	'(company-tng-frontend
-	  company-pseudo-tooltip-frontend
-	  company-echo-metadata-frontend))
+  ;; (setq company-frontends
+  ;;	'(company-tng-frontend
+  ;;	  company-pseudo-tooltip-frontend
+  ;;	  company-echo-metadata-frontend))
 
   ;; Better sorting and filtering
+  ;; https://github.com/raxod502/prescient.el
   (use-package company-prescient
     :init (company-prescient-mode 1))
 
   ;; Icons and quickhelp
   (when emacs/>=26p
+    ;; https://github.com/sebastiencs/company-box
     (use-package company-box
       :diminish
       :functions (my-company-box--make-line

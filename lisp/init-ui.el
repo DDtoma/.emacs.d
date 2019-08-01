@@ -5,7 +5,8 @@
 	  (llight//set-windows-size-windows)
 	(llight//set-windows-size-unix))
       (tool-bar-mode 0)
-      (scroll-bar-mode 0)))
+      (scroll-bar-mode 0)
+      (load-theme 'zenburn t)))
 
 
 ;;(global-display-line-numbers-mode)
@@ -22,10 +23,10 @@
   (set-face-attribute 'mode-line-inactive nil :height 140)
   )
 
-(use-package solarized-theme
-  :config
-  (if (display-graphic-p)
-      (load-theme 'solarized-dark t)))
+;; (use-package solarized-theme
+;;   :config
+;;   (if (display-graphic-p)
+;;       (load-theme 'solarized-dark t)))
 
 ;; (use-package whitespace
 ;;   :init
