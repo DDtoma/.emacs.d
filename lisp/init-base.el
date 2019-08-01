@@ -145,21 +145,13 @@ If the new path's directories does not exist, create them."
   (projectile-mode +1)
   )
 
-(use-package counsel-projectile
-  :ensure t
-  :init
-  (counsel-projectile-mode +1)
-  :bind
-  (:map llight//global-map
-	("p f" . counsel-projectile-find-file)
-	("p d" . counsel-projectile-find-dir)))
-
 (use-package counsel
   :init
   (when (commandp 'counsel-M-x)
     (global-set-key [remap execute-extended-command] #'counsel-M-x))
   :bind
   ("M-x" . counsel-M-x)
+  ("C-x C-f" . counsel-find-file)
   (:map llight//global-map
 	("s f" . counsel-fzf)
 	("s a" . counsel-ag)
@@ -168,6 +160,15 @@ If the new path's directories does not exist, create them."
 	("f f" . counsel-find-file)
 	("x" . counsel-M-x))
   )
+
+(use-package counsel-projectile
+  :ensure t
+  :init
+  (counsel-projectile-mode +1)
+  :bind
+  (:map llight//global-map
+	("p f" . counsel-projectile-find-file)
+	("p d" . counsel-projectile-find-dir)))
 
 (use-package helpful
   :defines ivy-initial-inputs-alist
