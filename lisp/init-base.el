@@ -145,6 +145,25 @@ If the new path's directories does not exist, create them."
   (projectile-mode +1)
   )
 
+(use-package ibuffer-projectile
+  :ensure t
+  :config
+
+  (setq ibuffer-formats
+	'((mark modified read-only " "
+		(name 18 18 :left :elide)
+		" "
+		(size 9 -1 :right)
+		" "
+		(mode 16 16 :left :elide)
+		" "
+		project-relative-file)))
+  :hook
+  (ibuffer . (lambda ()
+	       (ibuffer-projectile-set-filter-groups)
+	       (unless (eq ibuffer-sorting-mode 'alphabetic)
+		 (ibuffer-do-sort-by-alphabetic)))))
+
 (use-package counsel
   :init
   (when (commandp 'counsel-M-x)

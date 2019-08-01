@@ -12,7 +12,7 @@
 		     ;; Git
 		     magit diff-hl
 		     ;; Search
-		     ag fzf counsel swiper ivy projectile
+		     ag fzf counsel swiper ivy projectile ibuffer-projectile
 		     ;; lsp
 		     lsp-treemacs lsp-ui lsp-mode
 		     ;; Company
