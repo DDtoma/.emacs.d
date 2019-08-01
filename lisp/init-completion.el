@@ -130,7 +130,12 @@
     :init
     (push 'company-lsp company-backends)
     (setq company-lsp-cache-candidates 'auto)
-  )
+    )
+
+  (use-package company-tabnine
+    :ensure t
+    :config
+    (add-to-list 'company-backends #'company-tabnine))
 
   ;; Popup documentation for completion candidates
   (when (and (not emacs/>=26p) (display-graphic-p))
@@ -142,11 +147,6 @@
       (setq company-quickhelp-delay 0.5)
       (company-quickhelp-mode 1)))
   )
-
-;; (use-package company-tabnine
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'company-backends #'company-tabnine))
 
 (use-package yasnippet
   :diminish yas-minor-mode
