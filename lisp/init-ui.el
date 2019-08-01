@@ -22,13 +22,10 @@
   (set-face-attribute 'mode-line-inactive nil :height 140)
   )
 
-(use-package kaolin-themes
+(use-package solarized-theme
   :config
   (if (display-graphic-p)
-      (load-theme 'kaolin-light t)
-      )
-  ;;(kaolin-treemacs-theme)
-  )
+      (load-theme 'solarized-dark)))
 
 ;; (use-package whitespace
 ;;   :init

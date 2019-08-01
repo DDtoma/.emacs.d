@@ -18,7 +18,7 @@
 		     ;; Company
 		     company company-lsp company-prescient company-box yasnippet yasnippet-snippets company-quickhelp
 		     ;; Theme UI
-		     kaolin-themes
+		     solarized-theme
 		     ;; Language
 		     modern-cpp-font-lock
 		     ;;;; Java
