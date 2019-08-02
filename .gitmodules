@@ -1,3 +1,8 @@
 [submodule "plugin/all-the-icons-ivy"]
 	path = plugin/all-the-icons-ivy
 	url = https://github.com/asok/all-the-icons-ivy
+
+[submodule "plugin/snails"]
+	pash = plugin/snails
+	url = https://github.com/manateelazycat/snails
+	path = plugin/snails

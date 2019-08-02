@@ -48,6 +48,4 @@
       (and (= emacs-major-version 25) (>= emacs-minor-version 2)))
   "Emacs is 25.2 or above.")
 
-(setq-default llight//global-prefix-key "M-m")
-
 (provide 'init-const)
