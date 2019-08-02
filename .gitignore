@@ -9,6 +9,7 @@ elpa/
 eclipse.jdt.ls/
 request/
 workspace/
+eshell/
 
 .DS_Store
 custom.el
