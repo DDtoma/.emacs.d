@@ -175,6 +175,7 @@ If the new path's directories does not exist, create them."
   (:map llight//global-map
 	("s f" . counsel-fzf)
 	("s a" . counsel-ag)
+	("s r" . counsel-rg)
 	("s k" . counsel-ack)
 	("s c" . counsel-cd)
 	("s K" . counsel-describes)
