@@ -15,7 +15,6 @@
 
 
 (when (display-graphic-p)
-;;  (add-to-list 'load-path )
   (use-package snails
     :load-path "~/.emacs.d/plugin/snails"
     :config

@@ -208,6 +208,7 @@ If the new path's directories does not exist, create them."
 	))
 
 (use-package helpful
+  :ensure t
   :defines ivy-initial-inputs-alist
   :bind
   (:map llight//global-map
