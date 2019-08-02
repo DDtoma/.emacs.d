@@ -6,7 +6,9 @@
 	(llight//set-windows-size-unix))
       (tool-bar-mode 0)
       (scroll-bar-mode 0)
-      (load-theme 'zenburn t)))
+      (use-package zenburn-theme
+	:ensure t
+	:config (load-theme 'zenburn t))))
 
 
 ;;(global-display-line-numbers-mode)
@@ -15,18 +17,19 @@
 ;; close welcome screen
 (setq inhibit-splash-screen t)
 
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode)
-  :init
-  (set-face-attribute 'mode-line nil :height 140)
-  (set-face-attribute 'mode-line-inactive nil :height 140)
-  )
+;; (use-package doom-modeline
+;;   :ensure t
+;;   :hook (after-init . doom-modeline-mode)
+;;   :init
+;;   (set-face-attribute 'mode-line nil :height 140)
+;;   (set-face-attribute 'mode-line-inactive nil :height 140)
+;;   )
 
-;; (use-package solarized-theme
-;;   :config
-;;   (if (display-graphic-p)
-;;       (load-theme 'solarized-dark t)))
+(use-package awesome-tray
+  :load-path "~/.emacs.d/plugin/awesome-tray"
+  :ensure nil
+  :config
+  (awesome-tray-mode 1))
 
 ;; (use-package whitespace
 ;;   :init
@@ -52,9 +55,10 @@
 
 (if (display-graphic-p)
   (progn
-    (add-to-list 'load-path "~/.emacs.d/plugin/all-the-icons-ivy")
+;;    (add-to-list 'load-path )
     (use-package all-the-icons-ivy
-      :ensure t
+      :ensure nil
+      :load-path "~/.emacs.d/plugin/all-the-icons-ivy"
       :config
       (all-the-icons-ivy-setup)
       (setq all-the-icons-ivy-file-commands

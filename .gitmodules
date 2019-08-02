@@ -6,3 +6,11 @@
 	pash = plugin/snails
 	url = https://github.com/manateelazycat/snails
 	path = plugin/snails
+
+[submodule "plugin/awesome-pair"]
+	url = https://github.com/manateelazycat/awesome-pair
+	path = plugin/awesome-pair
+
+[submodule "plugin/awesome-tray"]
+	url = https://github.com/manateelazycat/awesome-tray
+	path = plugin/awesome-tray

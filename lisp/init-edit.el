@@ -19,17 +19,19 @@
   ("C-<" . mc/mark-previous-like-this)
   ("C-c C-<" . mc/mark-all-like-this))
 
-(use-package smartparens
-  :ensure t
-  :bind
-  ("C-c k" . sp-kill-hybrid-sexp)
-  ("C-c r" . sp-rewrap-sexp)
-  ("C-c d" . sp-unwrap-sexp)
-  )
+;; (use-package smartparens
+;;   :ensure t
+;;   :bind
+;;   ("C-c k" . sp-kill-hybrid-sexp)
+;;   ("C-c r" . sp-rewrap-sexp)
+;;   ("C-c d" . sp-unwrap-sexp)
+;;   )
 
 ;; https://github.com/leoliu/easy-kill
 ;; https://github.com/knu/easy-kill-extras.el
 (use-package easy-kill-extras
+  :ensure t
+  :after easy-kill
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark-sexp)
 	 ([remap mark-word] . easy-mark-word)

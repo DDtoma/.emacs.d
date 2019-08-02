@@ -1,5 +1,5 @@
 (use-package company
-  :diminish company-mode
+  :ensure t
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-abort
   :bind (("M-/" . company-complete)
@@ -38,13 +38,14 @@
   ;; Better sorting and filtering
   ;; https://github.com/raxod502/prescient.el
   (use-package company-prescient
+    :ensure t
     :init (company-prescient-mode 1))
 
   ;; Icons and quickhelp
   (when emacs/>=26p
     ;; https://github.com/sebastiencs/company-box
     (use-package company-box
-      :diminish
+      :ensure t
       :functions (my-company-box--make-line
 		  my-company-box-icons--elisp)
       :commands (company-box--get-color
@@ -133,6 +134,7 @@
 		(Template . ,(all-the-icons-material "format_align_center" :height 0.9 :v-adjust -0.2)))))))
 
   (use-package company-lsp
+    :ensure t
     :init
     (setq company-lsp-cache-candidates 'auto)
     (setq company-lsp-async t)
@@ -152,6 +154,7 @@
   ;; Popup documentation for completion candidates
   (when (and (not emacs/>=26p) (display-graphic-p))
     (use-package company-quickhelp
+      :ensure t
       :defines company-quickhelp-delay
       :bind (:map company-active-map
 		  ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
@@ -161,9 +164,10 @@
   )
 
 (use-package yasnippet
-  :diminish yas-minor-mode
+  :ensure t
   :hook (after-init . yas-global-mode)
-  :config (use-package yasnippet-snippets))
+  :config (use-package yasnippet-snippets
+	    :ensure t))
 
 
 (provide 'init-completion)

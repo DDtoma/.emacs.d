@@ -6,23 +6,23 @@
 (setq package-list '(
 		     ;; Base
 		     use-package
-		     bind-key exec-path-from-shell dired-single helpful which-key
-		     ;; Edit
-		     smartparens easy-kill-extras whitespace multiple-cursors hungry-delete
-		     ;; Git
-		     magit diff-hl
-		     ;; Search
-		     ag fzf counsel swiper ivy projectile ibuffer-projectile
-		     ;; lsp
-		     lsp-treemacs lsp-ui lsp-mode
-		     ;; Company
-		     company company-lsp company-prescient company-box yasnippet yasnippet-snippets company-quickhelp
-		     ;; Theme UI
-		     solarized-theme zenburn-theme molokai-theme kaolin-themes
-		     ;; Language
-		     modern-cpp-font-lock
-		     ;;;; Java
-		     lsp-java dap-mode
+		     ;; bind-key exec-path-from-shell dired-single helpful which-key
+		     ;; ;; Edit
+		     ;; smartparens easy-kill-extras whitespace multiple-cursors hungry-delete
+		     ;; ;; Git
+		     ;; magit diff-hl
+		     ;; ;; Search
+		     ;; ag fzf counsel swiper ivy projectile ibuffer-projectile
+		     ;; ;; lsp
+		     ;; lsp-treemacs lsp-ui lsp-mode
+		     ;; ;; Company
+		     ;; company company-lsp company-prescient company-box yasnippet yasnippet-snippets company-quickhelp
+		     ;; ;; Theme UI
+		     ;; solarized-theme zenburn-theme molokai-theme kaolin-themes
+		     ;; ;; Language
+		     ;; modern-cpp-font-lock
+		     ;; ;;;; Java
+		     ;; lsp-java dap-mode
 		     ))
 
 (unless package-archive-contents

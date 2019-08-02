@@ -1,13 +1,16 @@
+(use-package magit
+  :ensure t
+  :bind
+  (:map llight//global-map
+	("g" . magit-status)))
+
 (use-package diff-hl
+  :ensure t
+  :after magit
   :init
   (global-diff-hl-mode)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   )
-
-(use-package magit
-  :bind
-  (:map llight//global-map
-	("g" . magit-status)))
 
 
 (provide 'init-git)

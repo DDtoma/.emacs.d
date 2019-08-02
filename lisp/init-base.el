@@ -5,11 +5,11 @@
 
 ;; auto pair
 ;;; http://ergoemacs.org/emacs/emacs_insert_brackets_by_pair.html
-(electric-pair-mode 1)
-(setq electric-pair-pairs '(
-			    (?\{ . ?\})
-			    (?\< . ?\>)
-			    ))
+;; (electric-pair-mode 1)
+;; (setq electric-pair-pairs '(
+;;			    (?\{ . ?\})
+;;			    (?\< . ?\>)
+;;			    ))
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
@@ -34,6 +34,7 @@ If the new path's directories does not exist, create them."
 ;; Environment
 (when (or sys/mac-x-p sys/linux-x-p)
   (use-package exec-path-from-shell
+    :ensure t
     :init
     (setq exec-path-from-shell-check-startup-files nil
 	  exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH")
@@ -59,6 +60,7 @@ If the new path's directories does not exist, create them."
 				"COMMIT_EDITMSG\\'")))
 
 (use-package windmove
+  :ensure nil
   :config
   (windmove-default-keybindings))
 
@@ -114,6 +116,7 @@ If the new path's directories does not exist, create them."
 
 (use-package ivy-rich
   :ensure t
+  :after ivy
   :init
   (ivy-rich-mode 1)
   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
@@ -132,6 +135,8 @@ If the new path's directories does not exist, create them."
   )
 
 (use-package swiper
+  :ensure t
+  :after ivy
   :bind
   (("\C-s" . swiper))
   )
@@ -147,6 +152,7 @@ If the new path's directories does not exist, create them."
 
 (use-package ibuffer-projectile
   :ensure t
+  :after projectile
   :config
 
   (setq ibuffer-formats
@@ -165,6 +171,7 @@ If the new path's directories does not exist, create them."
 		 (ibuffer-do-sort-by-alphabetic)))))
 
 (use-package counsel
+  :ensure t
   :init
   (when (commandp 'counsel-M-x)
     (global-set-key [remap execute-extended-command] #'counsel-M-x))
@@ -188,6 +195,7 @@ If the new path's directories does not exist, create them."
 
 (use-package counsel-projectile
   :ensure t
+  :after counsel
   :init
   (counsel-projectile-mode +1)
   :bind
