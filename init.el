@@ -37,5 +37,6 @@
 ;; Language
 (require 'init-c)
 (require 'init-java)
+(require 'init-python)
 
 (require 'init-keymap)
