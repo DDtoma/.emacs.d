@@ -106,13 +106,7 @@ If the new path's directories does not exist, create them."
   :init
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-  :config
-  (use-package all-the-icons-ivy
-    :ensure t
-    :init
-    (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy--buffer-transformer))
-  )
+  (setq enable-recursive-minibuffers t))
 
 (use-package ivy-rich
   :ensure t

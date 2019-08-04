@@ -1,14 +1,14 @@
 ;; setup frame size in system desktop
-(if (display-graphic-p)
-    (progn
-      (if (eq system-type 'windows-nt)
+(when (display-graphic-p)
+  (if (eq system-type 'windows-nt)
 	  (llight//set-windows-size-windows)
-	(llight//set-windows-size-unix))
-      (tool-bar-mode 0)
-      (scroll-bar-mode 0)
-      (use-package zenburn-theme
+    (llight//set-windows-size-unix))
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0)
+  (use-package zenburn-theme
 	:ensure t
-	:config (load-theme 'zenburn t))))
+	:config (load-theme 'zenburn t))
+  )
 
 
 ;;(global-display-line-numbers-mode)
@@ -53,20 +53,23 @@
   :init
   (add-hook 'before-save-hook #'whitespace-cleanup))
 
-(if (display-graphic-p)
-  (progn
-;;    (add-to-list 'load-path )
-    (use-package all-the-icons-ivy
-      :ensure nil
-      :load-path "~/.emacs.d/plugin/all-the-icons-ivy"
-      :config
-      (all-the-icons-ivy-setup)
-      (setq all-the-icons-ivy-file-commands
-	    '(counsel-find-file
-	      counsel-file-jump
-	      counsel-recentf
-	      counsel-projectile-find-file
-	      counsel-projectile-find-dir)))
-    ))
+
+(use-package all-the-icons-ivy
+  :if (display-graphic-p)
+  :ensure t
+  :after ivy
+  :init
+  (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy--buffer-transformer)
+  :config
+  (all-the-icons-ivy-setup)
+  (setq all-the-icons-ivy-file-commands
+	'(counsel-find-file
+	  counsel-file-jump
+	  counsel-recentf
+	  counsel-projectile-find-file
+	  counsel-projectile-find-dir)))
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :ensure t)
 
 (provide 'init-ui)

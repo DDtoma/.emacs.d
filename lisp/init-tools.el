@@ -14,20 +14,21 @@
 	("j l" . avy-goto-line)))
 
 
-(when (display-graphic-p)
-  (use-package snails
-    :load-path "~/.emacs.d/plugin/snails"
-    :config
-    (push 'snails snails-backend-imenu)
-    (push 'snails snails-backend-rg)	;ripgrep
-    (when (eq system-type 'darwin)
-      (push 'snails snails-backend-mdfind))
-    (when (eq system-type 'windows-nt)
-      (push 'snails snails-backend-everything))
-    :bind (:map llight//global-map
-		("S s" . snails)
-		("S p" . snails-search-point)))
-  )
+
+(use-package snails
+  :if (display-graphic-p)
+  :load-path "~/.emacs.d/plugin/snails"
+  :config
+  (push 'snails snails-backend-imenu)
+  (push 'snails snails-backend-rg)	;ripgrep
+  (when (eq system-type 'darwin)
+    (push 'snails snails-backend-mdfind))
+  (when (eq system-type 'windows-nt)
+    (push 'snails snails-backend-everything))
+  :bind (:map llight//global-map
+	      ("S s" . snails)
+	      ("S p" . snails-search-point)))
+
 
 (use-package awesome-pair
   :load-path "~/.emacs.d/plugin/awesome-pair"
