@@ -28,6 +28,7 @@
 (use-package awesome-tray
   :load-path "~/.emacs.d/plugin/awesome-tray"
   :ensure nil
+  :if (display-graphic-p)
   :config
   (awesome-tray-mode 1))
 
