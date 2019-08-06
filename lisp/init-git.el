@@ -6,6 +6,7 @@
 
 (use-package diff-hl
   :ensure t
+  :if (display-graphic-p)
   :after magit
   :init
   (global-diff-hl-mode)
