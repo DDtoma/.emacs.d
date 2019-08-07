@@ -29,8 +29,13 @@
 
 ;; https://github.com/leoliu/easy-kill
 ;; https://github.com/knu/easy-kill-extras.el
+(use-package easy-kill
+  :ensure t
+  :if (or sys/mac-x-p sys/linux-x-p))
+
 (use-package easy-kill-extras
   :ensure t
+  :if (display-graphic-p)
   :after easy-kill
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark-sexp)

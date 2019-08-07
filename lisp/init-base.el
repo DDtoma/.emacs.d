@@ -15,7 +15,7 @@
 
 ;; Buackup
 ;; (setq make-backup-files nil)
-;; (setq auto-save-default nil)
+(setq auto-save-default nil)
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 (defun my-backup-file-name (fpath)
   "Return a new file path of a given file path.
@@ -32,14 +32,14 @@ If the new path's directories does not exist, create them."
 (setq make-backup-file-name-function 'my-backup-file-name)
 
 ;; Environment
-(when (or sys/mac-x-p sys/linux-x-p)
-  (use-package exec-path-from-shell
-    :ensure t
-    :init
-    (setq exec-path-from-shell-check-startup-files nil
-	  exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH")
-	  exec-path-from-shell-arguments '("-l" "-i"))
-    (exec-path-from-shell-initialize)))
+(use-package exec-path-from-shell
+  :ensure t
+  :if (or sys/mac-x-p sys/linux-x-p)
+  :init
+  (setq exec-path-from-shell-check-startup-files nil
+	exec-path-from-shell-variables '("PATH" "MANPATH" "PYTHONPATH" "GOPATH")
+	exec-path-from-shell-arguments '("-l" "-i"))
+  (exec-path-from-shell-initialize))
 
 
 (use-package recentf
@@ -137,6 +137,7 @@ If the new path's directories does not exist, create them."
 
 (use-package projectile
   :ensure t
+  :after ivy
   :init
   (setq projectile-completion-system 'ivy)
   :config
@@ -189,7 +190,7 @@ If the new path's directories does not exist, create them."
 
 (use-package counsel-projectile
   :ensure t
-  :after counsel
+  :after counsel projectile
   :init
   (counsel-projectile-mode +1)
   :bind
@@ -204,6 +205,7 @@ If the new path's directories does not exist, create them."
 (use-package helpful
   :ensure t
   :defines ivy-initial-inputs-alist
+  :after ivy
   :bind
   (:map llight//global-map
 	("h p" . helpful-at-point))
