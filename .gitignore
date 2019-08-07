@@ -1,4 +1,6 @@
 *.elc
+session.*
+%*%~
 
 custom.el
 backup/
@@ -17,3 +19,6 @@ recentf
 .lsp-session-v1
 projectile-bookmarks.eld
 .mc-lists.el
+%backup%
+tramp
+#recentf#

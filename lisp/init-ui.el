@@ -73,14 +73,14 @@
   :if (display-graphic-p)
   :ensure t)
 
-(use-package ivy-posframe
-  :ensure t
-  :if (display-graphic-p)
-  :after ivy
-  :init
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-  :config
-  (ivy-posframe-mode 1)
-  )
+;; (use-package ivy-posframe
+;;   :ensure t
+;;   :if (display-graphic-p)
+;;   :after ivy
+;;   :init
+;;   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+;;   :config
+;;   (ivy-posframe-mode 1)
+;;   )
 
 (provide 'init-ui)
