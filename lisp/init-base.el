@@ -13,6 +13,9 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
+;; close voice
+(setq ring-bell-function 'ignore)
+
 ;; Buackup
 ;; (setq make-backup-files nil)
 (setq auto-save-default nil)
