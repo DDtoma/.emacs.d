@@ -73,6 +73,10 @@
   :if (display-graphic-p)
   :ensure t)
 
+(use-package hl-line
+  :ensure nil
+  :hook (after-init . global-hl-line-mode))
+
 ;; (use-package ivy-posframe
 ;;   :ensure t
 ;;   :if (display-graphic-p)

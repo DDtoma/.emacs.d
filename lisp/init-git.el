@@ -8,8 +8,8 @@
   :ensure t
   :if (display-graphic-p)
   :after magit
-  :init
-  (global-diff-hl-mode)
+  :config
+  (global-diff-hl-mode 1)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   )
 
