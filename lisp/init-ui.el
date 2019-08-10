@@ -16,6 +16,17 @@
   (setq ns-use-native-fullscreen nil))
 
 ;;(global-display-line-numbers-mode)
+(use-package display-line-numbers
+  :ensure nil
+  :hook
+  (emacs-lisp-mode . display-line-numbers-mode)
+  (python-mode . display-line-numbers-mode)
+  (c-mode . display-line-numbers-mode)
+  (c++-mode . display-line-numbers-mode)
+  (lisp-mode . display-line-numbers-mode)
+  (js-mode . display-line-numbers-mode))
+
+
 ;; set default font size
 (set-face-attribute 'default nil :height 150)
 ;; close welcome screen

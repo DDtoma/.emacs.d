@@ -51,7 +51,7 @@
   :ensure t
   :bind
   (:map llight//global-map
-	 ("t t" . treemacs)))
+	("t t" . treemacs)))
 
 (when emacs/>=25.2p
   (use-package lsp-treemacs
