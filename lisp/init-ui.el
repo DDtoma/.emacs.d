@@ -10,6 +10,10 @@
 	:config (load-theme 'zenburn t))
   )
 
+;; Fullscreen
+;; WORKAROUND: To address blank screen issue with child-frame in fullscreen
+(when (and sys/mac-x-p emacs/>=26p)
+  (setq ns-use-native-fullscreen nil))
 
 ;;(global-display-line-numbers-mode)
 ;; set default font size

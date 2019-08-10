@@ -47,4 +47,8 @@
 ;;;; emacs operation
 (define-key llight//global-map (kbd "q q") 'save-buffers-kill-terminal)
 
+;;;; emacs windows
+(bind-keys ("C-<f11>" . toggle-frame-fullscreen)
+	   ("C-s-f" . toggle-frame-fullscreen))
+
 (provide 'init-keymap)
