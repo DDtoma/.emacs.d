@@ -38,5 +38,6 @@
 (require 'init-c)
 (require 'init-java)
 (require 'init-python)
+(require 'init-json)
 
 (require 'init-keymap)
