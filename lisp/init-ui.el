@@ -17,20 +17,20 @@
 ;; close welcome screen
 (setq inhibit-splash-screen t)
 
-;; (use-package doom-modeline
-;;   :ensure t
-;;   :hook (after-init . doom-modeline-mode)
-;;   :init
-;;   (set-face-attribute 'mode-line nil :height 140)
-;;   (set-face-attribute 'mode-line-inactive nil :height 140)
-;;   )
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  :init
+  (set-face-attribute 'mode-line nil :height 140)
+  (set-face-attribute 'mode-line-inactive nil :height 140)
+  )
 
-(use-package awesome-tray
-  :load-path "~/.emacs.d/plugin/awesome-tray"
-  :ensure nil
-  :if (display-graphic-p)
-  :config
-  (awesome-tray-mode 1))
+;; (use-package awesome-tray
+;;   :load-path "~/.emacs.d/plugin/awesome-tray"
+;;   :ensure nil
+;;   :if (display-graphic-p)
+;;   :config
+;;   (awesome-tray-mode 1))
 
 ;; (use-package whitespace
 ;;   :init
