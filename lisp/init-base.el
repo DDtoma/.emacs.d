@@ -19,12 +19,12 @@
 ;; Buackup
 ;; (setq make-backup-files nil)
 (setq auto-save-default nil)
-(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+(setq backup-directory-alist '(("" . "~/.emacs.d/.backup")))
 (defun my-backup-file-name (fpath)
   "Return a new file path of a given file path.
 If the new path's directories does not exist, create them."
   (let* (
-	(backupRootDir "~/.emacs.d/backup/")
+	(backupRootDir "~/.emacs.d/.backup/")
 	(filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, for example, “C:”
 	(backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
 	)

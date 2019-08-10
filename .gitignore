@@ -4,6 +4,7 @@ session.*
 
 custom.el
 backup/
+.backup/
 auto-save-list/
 transient/
 elpa/
