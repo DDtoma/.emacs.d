@@ -16,6 +16,10 @@
 ;; close voice
 (setq ring-bell-function 'ignore)
 
+;; system coding
+(prefer-coding-system 'utf-8)
+(setq default-file-name-coding-system 'utf-8)
+
 ;; Buackup
 ;; (setq make-backup-files nil)
 (setq auto-save-default nil)
