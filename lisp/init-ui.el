@@ -90,6 +90,7 @@
 
 (use-package hl-line
   :ensure nil
+  :if (display-graphic-p)
   :hook (after-init . global-hl-line-mode))
 
 ;; (use-package ivy-posframe
