@@ -10,6 +10,9 @@
 	:config (load-theme 'zenburn t))
   )
 
+(if (not (display-graphic-p))
+    (menu-bar-mode 0))
+
 ;; Fullscreen
 ;; WORKAROUND: To address blank screen issue with child-frame in fullscreen
 (when (and sys/mac-x-p emacs/>=26p)
