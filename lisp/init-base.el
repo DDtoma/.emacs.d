@@ -209,6 +209,7 @@ If the new path's directories does not exist, create them."
 	("s c" . counsel-cd)
 	("s K" . counsel-describes)
 	("s e" . counsel-minor)
+	("s i" . counsel-imenu)
 	("f r" . counsel-recentf)
 	("f b" . counsel-bookmark)
 	("f f" . counsel-find-file)
