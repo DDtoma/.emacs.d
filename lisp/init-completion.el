@@ -152,15 +152,15 @@
   ;;   (add-to-list 'company-backends #'company-tabnine))
 
   ;; Popup documentation for completion candidates
-  (when (and (not emacs/>=26p) (display-graphic-p))
-    (use-package company-quickhelp
-      :ensure t
-      :defines company-quickhelp-delay
-      :bind (:map company-active-map
-		  ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
-      :init
-      (setq company-quickhelp-delay 0.5)
-      (company-quickhelp-mode 1)))
+  (use-package company-quickhelp
+    :ensure t
+    :if (and (not emacs/>=26p) (display-graphic-p))
+    :defines company-quickhelp-delay
+    :bind (:map company-active-map
+		([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
+    :init
+    (setq company-quickhelp-delay 0.5)
+    (company-quickhelp-mode 1))
   )
 
 (use-package yasnippet
