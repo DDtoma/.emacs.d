@@ -25,16 +25,16 @@
 (setq auto-save-default nil)
 (setq backup-directory-alist '(("" . "~/.emacs.d/.backup")))
 (defun my-backup-file-name (fpath)
-  "Return a new file path of a given file path.
-If the new path's directories does not exist, create them."
+  "Return a new file path of a given file path.If the new path's directories does not exist, create them."
   (let* (
-	(backupRootDir "~/.emacs.d/.backup/")
-	(filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, for example, “C:”
-	(backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
-	)
+	 (backupRootDir "~/.emacs.d/.backup/")
+	 ;; remove Windows driver letter in path, for example, “C:”
+	 (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath ))
+	 (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
+	 )
     (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
     backupFilePath
-  )
+    )
   )
 (setq make-backup-file-name-function 'my-backup-file-name)
 
@@ -97,8 +97,7 @@ If the new path's directories does not exist, create them."
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind
   (:map llight//global-map
-	("w" . ace-window))
-  )
+	("w" . ace-window)))
 
 ;; http://lifegoo.pluskid.org/wiki/EnhanceDired.html
 (use-package dired
@@ -124,9 +123,7 @@ If the new path's directories does not exist, create them."
       (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
       (define-key dired-mode-map "^" 'dired-single-up-directory))
     :hook
-    (dired-mode . my-dired-init)
-    )
-  )
+    (dired-mode . my-dired-init)))
 
 (use-package ivy
   :ensure t
@@ -152,15 +149,13 @@ If the new path's directories does not exist, create them."
   (:map llight//global-map
 	("b b" . ivy-switch-buffer)
 	("X" . ivy-resume)
-	)
-  )
+	))
 
 (use-package swiper
   :ensure t
   :after ivy
   :bind
-  (("\C-s" . swiper))
-  )
+  (("\C-s" . swiper)))
 
 (use-package projectile
   :ensure t
@@ -169,8 +164,7 @@ If the new path's directories does not exist, create them."
   (setq projectile-completion-system 'ivy)
   :config
 ;;  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (projectile-mode +1)
-  )
+  (projectile-mode +1))
 
 (use-package ibuffer-projectile
   :ensure t
@@ -213,8 +207,7 @@ If the new path's directories does not exist, create them."
 	("f r" . counsel-recentf)
 	("f b" . counsel-bookmark)
 	("f f" . counsel-find-file)
-	("x" . counsel-M-x))
-  )
+	("x" . counsel-M-x)))
 
 (use-package counsel-projectile
   :ensure t
@@ -227,8 +220,7 @@ If the new path's directories does not exist, create them."
 	("p d" . counsel-projectile-find-dir)
 	("p c" . counsel-projectile-switch-project)
 	("p s a" . counsel-projectile-ag)
-	("p s g" . counsel-projectile-grep)
-	))
+	("p s g" . counsel-projectile-grep)))
 
 (use-package helpful
   :ensure t
