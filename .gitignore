@@ -1,6 +1,7 @@
 *.elc
 session.*
 %*%~
+.#*
 
 custom.el
 backup/
