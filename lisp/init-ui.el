@@ -1,3 +1,15 @@
+;; init-ui.el --- Better lookings and apperance
+;;
+;;; Commentary:
+;;
+;; configurations for better lookings and apperances
+;;
+
+;;; Code:
+
+(eval-when-compile
+  (require 'init-const))
+
 ;; setup frame size in system desktop
 (when (display-graphic-p)
   (if (eq system-type 'windows-nt)
@@ -41,6 +53,8 @@
   :init
   (set-face-attribute 'mode-line nil :height 140)
   (set-face-attribute 'mode-line-inactive nil :height 140)
+  (setq doom-modeline-major-mode-icon t
+	doom-modeline-mu4e nil)
   )
 
 ;; (use-package awesome-tray
@@ -107,3 +121,6 @@
 ;;   )
 
 (provide 'init-ui)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init-ui.el ends here

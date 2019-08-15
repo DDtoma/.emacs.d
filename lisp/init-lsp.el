@@ -27,9 +27,11 @@
 	      lsp-ui-doc-position 'at-point
 	      lsp-ui-doc-border (face-foreground 'default)
 	      lsp-ui-sideline-enable nil
-	      lsp-ui-sideline-ignore-duplicate t)
+	      lsp-ui-sideline-ignore-duplicate t
+	      lsp-ui-peek-enable t)
   (when (not (display-graphic-p))
-    (setq lsp-ui-doc-enable nil))
+    (setq lsp-ui-doc-enable nil)
+    (setq lsp-ui-peek-enable nil))
   :config
   (add-to-list 'lsp-ui-doc-frame-parameters '(right-fringe . 8))
 
