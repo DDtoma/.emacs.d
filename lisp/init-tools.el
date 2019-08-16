@@ -42,4 +42,11 @@
   :ensure t
   :if (display-graphic-p))
 
+
+(use-package youdao-dictionary
+  :ensure t
+  :bind
+  (:map llight//global-map
+	("t d" . youdao-dictionary-search-at-point+)))
+
 (provide 'init-tools)
