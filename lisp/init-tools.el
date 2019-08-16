@@ -38,4 +38,8 @@
 		   helpful-command))
       (cl-pushnew `(,cmd . "^") ivy-initial-inputs-alist))))
 
+(use-package web-search
+  :ensure t
+  :if (display-graphic-p))
+
 (provide 'init-tools)
