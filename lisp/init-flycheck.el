@@ -3,6 +3,7 @@
 
 (use-package flycheck
   :ensure t
+  :if (display-graphic-p)
   :hook (after-init . global-flycheck-mode)
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit)
