@@ -1,5 +1,6 @@
 (eval-when-compile
-  (require 'init-const))
+  (require 'init-const)
+  (require 'init-func))
 
 ;; setup frame size in system desktop
 (when (display-graphic-p)
