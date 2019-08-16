@@ -40,13 +40,16 @@
 
 (use-package web-search
   :ensure t
-  :if (display-graphic-p))
-
+  :if (display-graphic-p)
+  :bind
+  (:map llight//global-map ("t s" . web-search)))
 
 (use-package youdao-dictionary
   :ensure t
   :bind
   (:map llight//global-map
-	("t d" . youdao-dictionary-search-at-point+)))
+	("D p" . youdao-dictionary-search-at-point+)
+	("D P" . youdao-dictionary-search-at-point)
+	("D v" . youdao-dictionary-play-voice-at-point)))
 
 (provide 'init-tools)
