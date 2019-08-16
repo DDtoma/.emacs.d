@@ -33,6 +33,7 @@
 
 ;; Tools
 (require 'init-git)
+(require 'init-flycheck)
 (require 'init-tools)
 
 ;; Language
