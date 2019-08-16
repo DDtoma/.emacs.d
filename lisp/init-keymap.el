@@ -1,3 +1,5 @@
+(eval-when-compile
+  (require 'init-const))
 ;; Key Modifiers
 (with-no-warnings
   (cond
@@ -20,14 +22,10 @@
 	       ([(super w)] . delete-frame)
 	       ([(super z)] . undo)))))
 
-;; S-shift s-super m-meta <delete>
-(global-set-key (kbd "M-|") 'llight//delete-blank-lines)
-
 ;; build-in commad
 ;;;; edit
 (bind-key "C-h" 'delete-backward-char)
 ;;;; file command
-;;(define-key llight//global-map (kbd "f f") 'find-file)
 (define-key llight//global-map (kbd "f R") 'find-file-read-only)
 (define-key llight//global-map (kbd "f s") 'save-buffer)
 (define-key llight//global-map (kbd "f S") 'save-some-buffers)

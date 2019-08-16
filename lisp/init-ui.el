@@ -1,12 +1,3 @@
-;; init-ui.el --- Better lookings and apperance
-;;
-;;; Commentary:
-;;
-;; configurations for better lookings and apperances
-;;
-
-;;; Code:
-
 (eval-when-compile
   (require 'init-const))
 
@@ -121,6 +112,3 @@
 ;;   )
 
 (provide 'init-ui)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; init-ui.el ends here

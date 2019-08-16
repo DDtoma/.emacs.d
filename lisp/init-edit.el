@@ -1,3 +1,6 @@
+(eval-when-compile
+  (require 'init-const))
+
 (use-package avy
   :ensure t
   :bind
@@ -134,6 +137,6 @@
 (use-package hungry-delete
   :ensure t
   :bind
-  ("M-\\" . hungry-delete-backward))
+  ("M-|" . hungry-delete-backward))
 
 (provide 'init-edit)

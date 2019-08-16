@@ -1,3 +1,8 @@
+;; define my global key map
+(define-prefix-command 'llight//global-map)
+(global-set-key (kbd "M-m") llight//global-map)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (defconst sys/win32p
   (eq system-type 'windows-nt)
   "Are we running on a WinTel system?")
