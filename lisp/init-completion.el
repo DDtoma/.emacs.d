@@ -1,3 +1,6 @@
+(eval-when-compile
+  (require 'init-const))
+
 (use-package company
   :ensure t
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
@@ -159,7 +162,7 @@
     :bind (:map company-active-map
 		([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
     :init
-    (setq company-quickhelp-delay 0.5)
+    (setq company-quickhelp-delay 0.8)
     (company-quickhelp-mode 1))
   )
 
@@ -168,6 +171,5 @@
   :hook (after-init . yas-global-mode)
   :config (use-package yasnippet-snippets
 	    :ensure t))
-
 
 (provide 'init-completion)
