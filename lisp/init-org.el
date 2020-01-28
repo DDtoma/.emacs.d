@@ -29,7 +29,7 @@
 			      (make-variable-buffer-local 'show-paren-mode)
 			      (setq show-paren-mode nil))))
   :config
-  (setq org-agenda-files '("~/org")
+  (setq org-agenda-files '("~/note")
 	org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
 			    (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
 	org-todo-keyword-faces '(("HANGUP" . warning)
@@ -40,6 +40,15 @@
 	org-ellipsis (if (char-displayable-p ?) "  " nil)
 	org-pretty-entities t
 	org-hide-emphasis-markers t)
+
+  (setq org-capture-templates
+	 '(("t" "Todo" entry (file+headline "~/note/gtd.org" "Tasks")
+	    "* TODO %?\n %i\n %a")
+	   ("j" "Journal" entry (file+datetree "~/note/journal.org")
+	    "* %?\nEntered on %U\n %i\n %a")
+	   ("i" "Checkitem" checkitem (file+headline "~/note/gtd.org" "ItemBox")
+	    "[ ] %?\n - [ ] Enter Item\n\n %U\n")
+	   ))
   ;; markdown backend
   ;; (add-to-list 'org-export-backends 'md)
   )
