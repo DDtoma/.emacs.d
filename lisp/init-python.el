@@ -1,8 +1,8 @@
-(use-package lsp-python
-  :ensure t
-  :after lsp-mode
-  :hook
-  (python-mode . lsp-python-enable))
+;; (use-package lsp-python
+;;   :ensure t
+;;   :after lsp-mode
+;;   :hook
+;;   (python-mode . lsp-python-enable))
 
 (use-package pipenv
   :ensure t

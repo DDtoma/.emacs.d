@@ -5,19 +5,19 @@
   :bind (:map help-map ("C-h" . which-key-C-h-dispatch))
   :hook (after-init . which-key-mode))
 
-(use-package snails
-  :if (display-graphic-p)
-  :load-path "~/.emacs.d/plugin/snails"
-  :config
-  (push 'snails snails-backend-imenu)
-  (push 'snails snails-backend-rg)	;ripgrep
-  (when (eq system-type 'darwin)
-    (push 'snails snails-backend-mdfind))
-  (when (eq system-type 'windows-nt)
-    (push 'snails snails-backend-everything))
-  :bind (:map llight//global-map
-	      ("S s" . snails)
-	      ("S p" . snails-search-point)))
+;; (use-package snails
+;;   :if (display-graphic-p)
+;;   :load-path "~/.emacs.d/plugin/snails"
+;;   :config
+;;   (push 'snails snails-backend-imenu)
+;;   (push 'snails snails-backend-rg)	;ripgrep
+;;   (when (eq system-type 'darwin)
+;;     (push 'snails snails-backend-mdfind))
+;;   (when (eq system-type 'windows-nt)
+;;     (push 'snails snails-backend-everything))
+;;   :bind (:map llight//global-map
+;;	      ("S s" . snails)
+;;	      ("S p" . snails-search-point)))
 
 (use-package sudo-edit
   :ensure t)

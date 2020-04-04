@@ -9,18 +9,19 @@
     (setq w32-lwindow-modifier 'super     ; Left Windows key
 	  w32-apps-modifier 'hyper)       ; Menu/App key
     (w32-register-hot-key [s-t]))
-   ((and sys/macp (eq window-system 'mac))
-    ;; Compatible with Emacs Mac port
+   (sys/macp
     (setq mac-option-modifier 'super
 	  mac-command-modifier 'meta)
-    (bind-keys ([(super a)] . mark-whole-buffer)
-	       ([(super c)] . kill-ring-save)
-	       ([(super l)] . goto-line)
-	       ([(super q)] . save-buffers-kill-emacs)
-	       ([(super s)] . save-buffer)
-	       ([(super v)] . yank)
-	       ([(super w)] . delete-frame)
-	       ([(super z)] . undo)))))
+    ;; (bind-keys ([(super a)] . mark-whole-buffer)
+    ;;	       ([(super c)] . kill-ring-save)
+    ;;	       ([(Super l)] . goto-line)
+    ;;	       ([(super q)] . save-buffers-kill-emacs)
+    ;;	       ([(super s)] . save-buffer)
+    ;;	       ([(super v)] . yank)
+    ;;	       ([(super w)] . delete-frame)
+    ;;	       ([(super z)] . undo))
+    )
+   ))
 
 ;; build-in commad
 ;;;; edit

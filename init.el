@@ -30,6 +30,7 @@
 ;; Completion
 (require 'init-completion)
 (require 'init-lsp)
+;; (require 'init-nox)
 
 ;; Tools
 (require 'init-git)
@@ -40,6 +41,6 @@
 (require 'init-c)
 (require 'init-java)
 (require 'init-python)
-(require 'init-json)
+;; (require 'init-json)
 
 (require 'init-keymap)
