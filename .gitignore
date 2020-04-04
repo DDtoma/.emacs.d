@@ -15,6 +15,8 @@ request/
 workspace/
 eshell/
 url/
+nox/
+plugin/
 
 .DS_Store
 custom.el

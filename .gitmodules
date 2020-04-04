@@ -10,3 +10,7 @@
 [submodule "plugin/awesome-tray"]
 	url = https://github.com/manateelazycat/awesome-tray
 	path = plugin/awesome-tray
+
+[submodule "plugin/nox"]
+	url = https://github.com/manateelazycat/nox
+	path = plugin/nox
