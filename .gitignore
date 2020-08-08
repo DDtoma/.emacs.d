@@ -17,6 +17,7 @@ eshell/
 url/
 nox/
 plugin/
+eaf/
 
 .DS_Store
 custom.el

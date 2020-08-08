@@ -27,6 +27,7 @@
 (require 'init-edit)
 (require 'init-ui)
 
+
 ;; Completion
 (require 'init-completion)
 (require 'init-lsp)
@@ -36,6 +37,7 @@
 (require 'init-git)
 ;; (require 'init-flycheck)
 (require 'init-tools)
+(require 'init-eaf)
 
 ;; Language
 (require 'init-c)

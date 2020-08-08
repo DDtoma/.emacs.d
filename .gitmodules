@@ -1,7 +1,6 @@
 [submodule "plugin/snails"]
-	pash = plugin/snails
-	url = https://github.com/manateelazycat/snails
 	path = plugin/snails
+	url = https://github.com/manateelazycat/snails
 
 [submodule "plugin/awesome-pair"]
 	url = https://github.com/manateelazycat/awesome-pair
@@ -14,3 +13,7 @@
 [submodule "plugin/nox"]
 	url = https://github.com/manateelazycat/nox
 	path = plugin/nox
+
+[submodule "emacs-application-framework"]
+	url = https://github.com/manateelazycat/emacs-application-framework.git
+	path = plugin/emacs-application-framework
