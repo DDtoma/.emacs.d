@@ -8,6 +8,7 @@
 	  (llight//set-windows-size-windows)
     (llight//set-windows-size-unix))
   (tool-bar-mode 0)
+  (menu-bar-mode 0)
   (scroll-bar-mode 0)
   (use-package zenburn-theme
 	:ensure t
@@ -35,7 +36,7 @@
 
 
 ;; set default font size
-(set-face-attribute 'default nil :height 150)
+(set-face-attribute 'default nil :height 120)
 ;; close welcome screen
 (setq inhibit-splash-screen t)
 
