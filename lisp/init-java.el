@@ -6,8 +6,11 @@
   :config
   (add-hook 'java-mode-hook 'lsp)
   (add-hook 'lsp-mode-hook #'lsp-lens-mode)
-  ;;(add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
+  (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
+  (setq 'lsp-completion-provider :capf)
   )
+
+
 
 (use-package dap-mode
   :ensure t :after lsp-mode

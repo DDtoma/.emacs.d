@@ -7,9 +7,10 @@
   :config
   (setq nox-python-server 'pyls)
   :hook
-  ;; (emacs-lisp-mode . (lambda () (require 'nox) (nox-ensure)))
-  ;; (lisp-mode . (lambda () (require 'nox) (nox-ensure)))
+  (emacs-lisp-mode . (lambda () (require 'nox) (nox-ensure)))
+  (lisp-mode . (lambda () (require 'nox) (nox-ensure)))
   (python-mode . (lambda () (require 'nox) (nox-ensure)))
+  (java-mode . (lambda () (require 'nox) (nox-ensure)))
   )
 
 (provide 'init-nox)

@@ -136,14 +136,14 @@
 		(TypeParameter . ,(all-the-icons-faicon "arrows" :height 0.85 :v-adjust -0.05))
 		(Template . ,(all-the-icons-material "format_align_center" :height 0.9 :v-adjust -0.2)))))))
 
-  (use-package company-lsp
-    :ensure t
-    :init
-    (setq company-lsp-cache-candidates 'auto)
-    (setq company-lsp-async t)
-    (setq company-lsp-enable-snippet t)
-    (push 'company-lsp company-backends)
-    )
+  ;; (use-package company-lsp
+  ;;   :ensure t
+  ;;   :init
+  ;;   (setq company-lsp-cache-candidates 'auto)
+  ;;   (setq company-lsp-async t)
+  ;;   (setq company-lsp-enable-snippet t)
+  ;;   (push 'company-lsp company-backends)
+  ;;   )
 
   ;; machine leaning auto completion
   ;; home url: https://github.com/TommyX12/company-tabnine
