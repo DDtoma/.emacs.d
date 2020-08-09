@@ -15,9 +15,6 @@
 	:config (load-theme 'zenburn t))
   )
 
-(if (not (display-graphic-p))
-    (menu-bar-mode 0))
-
 ;; Fullscreen
 ;; WORKAROUND: To address blank screen issue with child-frame in fullscreen
 (when (and sys/mac-x-p emacs/>=26p)
@@ -44,8 +41,8 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :init
-  (set-face-attribute 'mode-line nil :height 140)
-  (set-face-attribute 'mode-line-inactive nil :height 140)
+  (set-face-attribute 'mode-line nil :height 120)
+  (set-face-attribute 'mode-line-inactive nil :height 120)
   (setq doom-modeline-major-mode-icon t
 	doom-modeline-mu4e nil)
   )
