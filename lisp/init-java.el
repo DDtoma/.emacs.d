@@ -7,10 +7,8 @@
   (add-hook 'java-mode-hook 'lsp)
   (add-hook 'lsp-mode-hook #'lsp-lens-mode)
   (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
-  (setq 'lsp-completion-provider :capf)
+  (setq lsp-java-vmargs '("-javaagent:\"~/.emacs.d/.cache/lombok.jar\"" "-noverify" "-Xmx1G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
   )
-
-
 
 (use-package dap-mode
   :ensure t :after lsp-mode
