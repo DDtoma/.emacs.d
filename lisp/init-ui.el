@@ -77,23 +77,23 @@
   (add-hook 'before-save-hook #'whitespace-cleanup))
 
 
-(use-package all-the-icons-ivy
-  :if (display-graphic-p)
-  :ensure t
-  :after ivy
-  :init
-  (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy--buffer-transformer)
-  :config
-  (all-the-icons-ivy-setup)
-  (setq all-the-icons-ivy-file-commands
-	'(counsel-find-file
-	  counsel-file-jump
-	  counsel-recentf
-	  counsel-projectile-find-file
-	  counsel-projectile-find-dir)))
-(use-package all-the-icons
-  :if (display-graphic-p)
-  :ensure t)
+;; (use-package all-the-icons-ivy
+;;   :if (display-graphic-p)
+;;   :ensure t
+;;   :after ivy
+;;   :init
+;;   (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy--buffer-transformer)
+;;   :config
+;;   (all-the-icons-ivy-setup)
+;;   (setq all-the-icons-ivy-file-commands
+;;	'(counsel-find-file
+;;	  counsel-file-jump
+;;	  counsel-recentf
+;;	  counsel-projectile-find-file
+;;	  counsel-projectile-find-dir)))
+;; (use-package all-the-icons
+;;   :if (display-graphic-p)
+;;   :ensure t)
 
 (use-package hl-line
   :ensure nil
