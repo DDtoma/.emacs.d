@@ -53,8 +53,8 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :init
-  (set-face-attribute 'mode-line nil :height 120)
-  (set-face-attribute 'mode-line-inactive nil :height 120)
+  (set-face-attribute 'mode-line nil :height 100)
+  (set-face-attribute 'mode-line-inactive nil :height 100)
   (setq doom-modeline-major-mode-icon t
 	doom-modeline-mu4e nil
 	doom-modeline-icon (display-graphic-p)
@@ -63,6 +63,13 @@
 	)
   ;; built-in `project' on 26+
   (setq doom-modeline-project-detection 'project)
+
+  (use-package nyan-mode
+    :ensure t
+    :hook (doom-modeline-mode . nyan-mode)
+    :init
+    (setq nyan-animate-nyancat t)
+    )
   )
 
 ;; (use-package awesome-tray
