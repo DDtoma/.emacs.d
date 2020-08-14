@@ -1,5 +1,6 @@
 (eval-when-compile
   (require 'init-const))
+
 ;; Key Modifiers
 (with-no-warnings
   (cond
@@ -12,14 +13,6 @@
    (sys/macp
     (setq mac-option-modifier 'super
 	  mac-command-modifier 'meta)
-    ;; (bind-keys ([(super a)] . mark-whole-buffer)
-    ;;	       ([(super c)] . kill-ring-save)
-    ;;	       ([(Super l)] . goto-line)
-    ;;	       ([(super q)] . save-buffers-kill-emacs)
-    ;;	       ([(super s)] . save-buffer)
-    ;;	       ([(super v)] . yank)
-    ;;	       ([(super w)] . delete-frame)
-    ;;	       ([(super z)] . undo))
     )
    ))
 
@@ -47,7 +40,7 @@
 (define-key llight//global-map (kbd "q q") 'save-buffers-kill-terminal)
 
 ;;;; emacs windows
-(bind-keys ("C-<f11>" . toggle-frame-fullscreen)
-	   ("C-s-f" . toggle-frame-fullscreen))
+;; (bind-keys ("C-<f11>" . toggle-frame-fullscreen)
+;;	   ("C-s-f" . toggle-frame-fullscreen))
 
 (provide 'init-keymap)
