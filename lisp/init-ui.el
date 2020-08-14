@@ -2,6 +2,19 @@
   (require 'init-const)
   (require 'init-func))
 
+;; set default font size
+;; (set-face-attribute 'default nil :height 120)
+
+(when (eq system-type 'gnu/linux)
+      (setq fonts '("Sarasa Nerd Font" "Sarasa Nerd Font"))
+      (set-face-attribute 'default nil :font
+			(format "%s:pixelsize=%d" (car fonts) 20))
+      (setq face-font-rescale-alist '(("Sarasa Nerd Font". 1.0))))
+
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset
+			(font-spec :family (car (cdr fonts)))))
+
 ;; setup frame size in system desktop
 (when (display-graphic-p)
   (if (eq system-type 'windows-nt)
@@ -29,11 +42,10 @@
   (c-mode . display-line-numbers-mode)
   (c++-mode . display-line-numbers-mode)
   (lisp-mode . display-line-numbers-mode)
-  (js-mode . display-line-numbers-mode))
+  (js-mode . display-line-numbers-mode)
+  (java-mode . display-line-numbers-mode)
+  )
 
-
-;; set default font size
-(set-face-attribute 'default nil :height 120)
 ;; close welcome screen
 (setq inhibit-splash-screen t)
 
@@ -44,7 +56,13 @@
   (set-face-attribute 'mode-line nil :height 120)
   (set-face-attribute 'mode-line-inactive nil :height 120)
   (setq doom-modeline-major-mode-icon t
-	doom-modeline-mu4e nil)
+	doom-modeline-mu4e nil
+	doom-modeline-icon (display-graphic-p)
+	; Whether display the environment version.
+	doom-modeline-env-enable-python t
+	)
+  ;; built-in `project' on 26+
+  (setq doom-modeline-project-detection 'project)
   )
 
 ;; (use-package awesome-tray
@@ -60,11 +78,11 @@
 ;;     (add-hook hook #'whitespace-mode))
 ;;   (add-hook 'before-save-hook #'whitespace-cleanup)
 ;;   (setq whitespace-display-mappings
-;;         ;; all numbers are unicode codepoint in decimal. e.g. (insert-char 182 1)
-;;         '(
-;;           (space-mark 32 [183] [46]) ; SPACE 32 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
-;;           (newline-mark 10 [182 10]) ; LINE FEED,
-;;           (tab-mark 9 [9655 9] [92 9]) ; tab
+;;	;; all numbers are unicode codepoint in decimal. e.g. (insert-char 182 1)
+;;	'(
+;;	  (space-mark 32 [183] [46]) ; SPACE 32 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+;;	  (newline-mark 10 [182 10]) ; LINE FEED,
+;;	  (tab-mark 9 [9655 9] [92 9]) ; tab
 ;;	  ))
 ;;   :config
 ;;   (setq whitespace-line-column 80) ;; limit line length
@@ -99,15 +117,5 @@
   :ensure nil
   :if (display-graphic-p)
   :hook (after-init . global-hl-line-mode))
-
-;; (use-package ivy-posframe
-;;   :ensure t
-;;   :if (display-graphic-p)
-;;   :after ivy
-;;   :init
-;;   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-;;   :config
-;;   (ivy-posframe-mode 1)
-;;   )
 
 (provide 'init-ui)
