@@ -134,9 +134,17 @@
 				(?t string-to-char-backward "")
 				(?T string-up-to-char-backward ""))))
 
-(use-package hungry-delete
+;; (use-package hungry-delete
+;;   :ensure t
+;;   :bind
+;;   ("M-|" . hungry-delete-backward))
+
+(use-package smart-hungry-delete
   :ensure t
-  :bind
-  ("M-|" . hungry-delete-backward))
+  :bind (("<backspace>" . smart-hungry-delete-backward-char)
+		 ("C-d" . smart-hungry-delete-forward-char))
+  :defer nil ;; dont defer so we can add our functions to hooks
+  :config (smart-hungry-delete-add-default-hooks)
+  )
 
 (provide 'init-edit)
