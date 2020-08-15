@@ -38,6 +38,7 @@
 ;; (require 'init-flycheck)
 (require 'init-tools)
 (require 'init-eaf)
+(require 'init-org)
 
 ;; Language
 (require 'init-c)
