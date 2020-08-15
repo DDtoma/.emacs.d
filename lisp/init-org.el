@@ -3,13 +3,14 @@
   :bind
   (("C-c a" . org-agenda)
 	 ("C-c b" . org-switchb)
-	 :map org-mode-map
-	 ("<" . (lambda ()
-		  "Insert org template."
-		  (interactive)
-		  (if (or (region-active-p) (looking-back "^\s*" 1))
-		      (org-hydra/body)
-		    (self-insert-command 1)))))
+	 ;; :map org-mode-map
+	 ;; ("<" . (lambda ()
+	 ;;	  "Insert org template."
+	 ;;	  (interactive)
+	 ;;	  (if (or (region-active-p) (looking-back "^\s*" 1))
+	 ;;	      (org-hydra/body)
+	 ;;	    (self-insert-command 1))))
+	 )
   :hook
   ((org-mode . (lambda ()
 		       "Beautify Org Checkbox Symbol"
@@ -30,6 +31,30 @@
 			((save-excursion)tq show-paren-mode nil)))
    )
   :config
+  (defhydra hydra-global-org (:color blue
+				     :hint nil)
+    "
+Timer^^        ^Clock^         ^Capture^
+--------------------------------------------------
+s_t_art        _w_ clock in    _c_apture
+ _s_top        _o_ clock out   _l_ast capture
+_r_eset        _j_ clock goto
+_p_rint
+"
+    ("t" org-timer-start)
+    ("s" org-timer-stop)
+    ;; Need to be at timer
+    ("r" org-timer-set-timer)
+    ;; Print timer value to buffer
+    ("p" org-timer)
+    ("w" (org-clock-in '(4)))
+    ("o" org-clock-out)
+    ;; Visit the clocked task from any buffer
+    ("j" org-clock-goto)
+    ("c" org-capture)
+    ("l" org-capture-goto-last-stored))
+  (global-set-key [f11] 'hydra-global-org/body)
+
   (setq org-agenda-files '("/home/llight/Documents/Note")
 	org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
 	org-todo-keyword-faces '(("HANGUP" . warning)
@@ -52,6 +77,5 @@
   ;; markdown backend
   ;; (add-to-list 'org-export-backends 'md)
   )
-
 
 (provide 'init-org)
