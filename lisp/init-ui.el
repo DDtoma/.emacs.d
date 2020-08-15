@@ -68,7 +68,7 @@
     :ensure t
     :hook (doom-modeline-mode . nyan-mode)
     :init
-    (setq nyan-animate-nyancat t)
+    (setq nyan-animate-nyancat nil)
     )
   )
 
