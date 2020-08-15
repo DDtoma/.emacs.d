@@ -38,6 +38,7 @@
 
 ;;;; emacs operation
 (define-key llight//global-map (kbd "q q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-c c") 'org-capture)
 
 ;;;; emacs windows
 ;; (bind-keys ("C-<f11>" . toggle-frame-fullscreen)

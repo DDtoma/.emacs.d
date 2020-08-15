@@ -22,16 +22,16 @@
 		       (push '("#+END_QUOTE" . ?«) prettify-symbols-alist)
 		       (push '("#+HEADERS" . ?☰) prettify-symbols-alist)
 		       (prettify-symbols-mode 1)))
-	 (org-indent-mode . (lambda()
-			      (diminish 'org-indent-mode)
-			      ;; WORKAROUND: Prevent text moving around while using brackets
-			      ;; @see https://github.com/seagle0128/.emacs.d/issues/88
-			      (make-variable-buffer-local 'show-paren-mode)
-			      (setq show-paren-mode nil))))
+   (org-indent-mode . (lambda()
+			(diminish 'org-indent-mode)
+			;; WORKAROUND: Prevent text moving around while using brackets
+			;; @see https://github.com/seagle0128/.emacs.d/issues/88
+			(make-variable-buffer-local 'show-paren-mode)
+			((save-excursion)tq show-paren-mode nil)))
+   )
   :config
-  (setq org-agenda-files '("~/note")
-	org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-			    (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+  (setq org-agenda-files '("/home/llight/Documents/Note")
+	org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)"))
 	org-todo-keyword-faces '(("HANGUP" . warning)
 				 ("❓" . warning))
 	org-log-done 'time
@@ -42,11 +42,11 @@
 	org-hide-emphasis-markers t)
 
   (setq org-capture-templates
-	 '(("t" "Todo" entry (file+headline "~/note/gtd.org" "Tasks")
+	 '(("t" "Todo" entry (file+headline "/home/llight/Documents/Note/gtd.org" "Tasks")
 	    "* TODO %?\n %i\n %a")
-	   ("j" "Journal" entry (file+datetree "~/note/journal.org")
+	   ("j" "Journal" entry (file+datetree "/home/llight/Documents/Note/journal.org")
 	    "* %?\nEntered on %U\n %i\n %a")
-	   ("i" "Checkitem" checkitem (file+headline "~/note/gtd.org" "ItemBox")
+	   ("i" "Checkitem" checkitem (file+headline "/home/llight/Documents/Note/gtd.org" "ItemBox")
 	    "[ ] %?\n - [ ] Enter Item\n\n %U\n")
 	   ))
   ;; markdown backend
