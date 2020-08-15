@@ -14,9 +14,6 @@
 	url = https://github.com/manateelazycat/nox
 	path = plugin/nox
 
-[submodule "emacs-application-framework"]
-	url = https://github.com/manateelazycat/emacs-application-framework.git
+[submodule "plugin/emacs-application-framework"]
 	path = plugin/emacs-application-framework
-[submodule "plugin/-f"]
-	path = plugin/-f
 	url = https://github.com/manateelazycat/emacs-application-framework.git
