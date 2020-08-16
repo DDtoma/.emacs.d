@@ -161,4 +161,7 @@
 	("p s a" . counsel-projectile-ag)
 	("p s g" . counsel-projectile-grep)))
 
+(use-package diminish
+  :ensure t)
+
 (provide 'init-base)

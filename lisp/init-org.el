@@ -28,7 +28,7 @@
 			;; WORKAROUND: Prevent text moving around while using brackets
 			;; @see https://github.com/seagle0128/.emacs.d/issues/88
 			(make-variable-buffer-local 'show-paren-mode)
-			((save-excursion)tq show-paren-mode nil)))
+			(setq show-paren-mode nil)))
    )
   :config
   (defhydra hydra-global-org (:color blue

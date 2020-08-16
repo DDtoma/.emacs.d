@@ -62,7 +62,7 @@
 	doom-modeline-env-enable-python t
 	)
   ;; built-in `project' on 26+
-  (setq doom-modeline-project-detection 'project)
+  (setq doom-modeline-project-detection 'ffip)
 
   (use-package nyan-mode
     :ensure t
