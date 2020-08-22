@@ -61,6 +61,13 @@
 	; Whether display the environment version.
 	doom-modeline-env-enable-python t
 	)
+  (set-fontset-font t 'unicode (font-spec :family "Source Code Pro" :size 20))
+  (setq
+   doom-font (font-spec :family "Source Code Pro" :size 20 :weight 'regular)
+   doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 20)
+   doom-unicode-font (font-spec :family "Source Code Pro")
+   doom-big-font (font-spec :family "Source Code Pro" :size 20)
+   )
   ;; built-in `project' on 26+
   (setq doom-modeline-project-detection 'ffip)
 
