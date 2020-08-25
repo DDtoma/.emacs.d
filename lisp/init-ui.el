@@ -103,10 +103,7 @@
 ;;   (setq whitespace-style '(face spaces tabs newline space-mark tab-mark newline-mark))
 ;;   )
 
-(use-package whitespace
-  :ensure t
-  :init
-  (add-hook 'before-save-hook #'whitespace-cleanup))
+
 
 
 ;; (use-package all-the-icons-ivy
