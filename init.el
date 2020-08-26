@@ -24,9 +24,9 @@
 (require 'init-env)
 (require 'init-func)
 (require 'init-base)
+(require 'init-org)
 (require 'init-edit)
 (require 'init-ui)
-
 
 ;; Completion
 (require 'init-completion)
@@ -38,12 +38,11 @@
 ;; (require 'init-flycheck)
 (require 'init-tools)
 (require 'init-eaf)
-(require 'init-org)
+
 
 ;; Language
 (require 'init-c)
 (require 'init-java)
 (require 'init-python)
 ;; (require 'init-json)
-
 (require 'init-keymap)

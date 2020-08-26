@@ -22,11 +22,7 @@
     (llight//set-windows-size-unix))
   (tool-bar-mode 0)
   (menu-bar-mode 0)
-  (scroll-bar-mode 0)
-  (use-package zenburn-theme
-	:ensure t
-	:config (load-theme 'zenburn t))
-  )
+  (scroll-bar-mode 0))
 
 ;; Fullscreen
 ;; WORKAROUND: To address blank screen issue with child-frame in fullscreen
@@ -86,47 +82,13 @@
 ;;   :config
 ;;   (awesome-tray-mode 1))
 
-;; (use-package whitespace
-;;   :init
-;;   (dolist (hook '(prog-mode-hook text-mode-hook))
-;;     (add-hook hook #'whitespace-mode))
-;;   (add-hook 'before-save-hook #'whitespace-cleanup)
-;;   (setq whitespace-display-mappings
-;;	;; all numbers are unicode codepoint in decimal. e.g. (insert-char 182 1)
-;;	'(
-;;	  (space-mark 32 [183] [46]) ; SPACE 32 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
-;;	  (newline-mark 10 [182 10]) ; LINE FEED,
-;;	  (tab-mark 9 [9655 9] [92 9]) ; tab
-;;	  ))
-;;   :config
-;;   (setq whitespace-line-column 80) ;; limit line length
-;;   (setq whitespace-style '(face spaces tabs newline space-mark tab-mark newline-mark))
-;;   )
-
-
-
-
-;; (use-package all-the-icons-ivy
-;;   :if (display-graphic-p)
-;;   :ensure t
-;;   :after ivy
-;;   :init
-;;   (ivy-set-display-transformer 'ivy-switch-buffer 'all-the-icons-ivy--buffer-transformer)
-;;   :config
-;;   (all-the-icons-ivy-setup)
-;;   (setq all-the-icons-ivy-file-commands
-;;	'(counsel-find-file
-;;	  counsel-file-jump
-;;	  counsel-recentf
-;;	  counsel-projectile-find-file
-;;	  counsel-projectile-find-dir)))
-;; (use-package all-the-icons
-;;   :if (display-graphic-p)
-;;   :ensure t)
-
 (use-package hl-line
   :ensure nil
   :if (display-graphic-p)
   :hook (after-init . global-hl-line-mode))
+
+(use-package zenburn-theme
+	:ensure t
+	:config (load-theme 'zenburn t))
 
 (provide 'init-ui)
