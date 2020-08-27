@@ -181,7 +181,7 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind
   (:map llight//global-map
-	("w" . ace-window)))
+	("w w" . ace-window)))
 
 (use-package dired-single
     :ensure t

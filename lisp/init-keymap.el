@@ -24,6 +24,9 @@
 (define-key llight//global-map (kbd "f s") 'save-buffer)
 (define-key llight//global-map (kbd "f S") 'save-some-buffers)
 (define-key llight//global-map (kbd "d") 'dired)
+(define-key llight//global-map (kbd "w 1") 'delete-other-windows)
+(define-key llight//global-map (kbd "w 2") 'split-window-below)
+(define-key llight//global-map (kbd "w 3") 'split-window-right)
 
 ;;;; buffer command
 (define-key llight//global-map (kbd "b k") 'kill-this-buffer)
