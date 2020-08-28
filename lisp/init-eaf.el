@@ -1,4 +1,5 @@
 (use-package eaf
+  :if sys/linux-x-p
   :load-path "~/.emacs.d/plugin/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
   :custom
   (eaf-find-alternate-file-in-dired t)
