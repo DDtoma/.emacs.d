@@ -47,3 +47,5 @@
 (require 'init-python)
 ;; (require 'init-json)
 (require 'init-keymap)
+
+(require 'init-tmp)

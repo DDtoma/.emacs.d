@@ -2,6 +2,7 @@
 session.*
 %*%~
 .#*
+.dap-breakpoints
 
 custom.el
 backup/

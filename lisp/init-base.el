@@ -5,8 +5,49 @@
 ;;			    (?\{ . ?\})
 ;;			    (?\< . ?\>)
 ;;			    ))
-(show-paren-mode 1)
-(setq show-paren-style 'parenthesis)
+
+(use-package emacs
+  :ensure nil
+  :init
+  (setq inhibit-startup-screen t
+	initial-scratch-message nil
+	sentence-end-double-space nil
+	ring-bell-function 'ignore
+	frame-resize-pixelwise t)
+
+  (setq user-full-name "llight"
+	user-mail-address "ll66456645@163.com")
+
+  (setq read-process-output-max (* 1024 1024))
+
+  (defalias 'yes-or-no-p 'y-or-n-p)
+
+  (set-charset-priority 'unicode)
+  (setq locale-coding-system 'utf-8
+	coding-system-for-read 'utf-8
+	coding-system-for-write 'utf-8)
+
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+  (show-paren-mode 1)
+  (setq show-paren-style 'parenthesis)
+
+  (when (window-system)
+    (tool-bar-mode -1)
+    (toggle-scroll-bar -1))
+
+  (display-time-mode -1)
+  (setq column-number-mode t)
+
+  (setq-default indent-tabs-mode t)
+  (setq-default tab-width 4)
+  (setq tab-always-indent 'complete)
+  )
+
 
 (use-package recentf
   :ensure nil
@@ -106,60 +147,60 @@
   :ensure nil
   :hook (after-init . global-auto-revert-mode))
 
-(use-package awesome-pair
-  :load-path "~/.emacs.d/plugin/awesome-pair"
-  :ensure nil
-  :hook
-  (emacs-lisp-mode . awesome-pair-mode)
-  (c-mode-common . awesome-pair-mode)
-  (c-mode . awesome-pair-mode)
-  (c++-mode . awesome-pair-mode)
-  (java-mode . awesome-pair-mode)
-  (haskell-mode . awesome-pair-mode)
-  (emacs-lisp-mode . awesome-pair-mode)
-  (lisp-interaction-mode . awesome-pair-mode)
-  (lisp-mode . awesome-pair-mode)
-  (maxima-mode . awesome-pair-mode)
-  (ielm-mode . awesome-pair-mode)
-  (sh-mode . awesome-pair-mode)
-  (makefile-gmake-mode . awesome-pair-mode)
-  (php-mode . awesome-pair-mode)
-  (python-mode . awesome-pair-mode)
-  (js-mode . awesome-pair-mode)
-  (go-mode . awesome-pair-mode)
-  (qml-mode . awesome-pair-mode)
-  (jade-mode . awesome-pair-mode)
-  (css-mode . awesome-pair-mode)
-  (ruby-mode . awesome-pair-mode)
-  (coffee-mode . awesome-pair-mode)
-  (rust-mode . awesome-pair-mode)
-  (qmake-mode . awesome-pair-mode)
-  (lua-mode . awesome-pair-mode)
-  (swift-mode . awesome-pair-mode)
-  (minibuffer-inactive-mode . awesome-pair-mode)
-  :bind
-  (:map awesome-pair-mode-map
-	("(" . awesome-pair-open-round)
-	("[" . awesome-pair-open-bracket)
-	("{" . awesome-pair-open-curly)
-	(")" . awesome-pair-close-round)
-	("]" . awesome-pair-close-bracket)
-	("}" . awesome-pair-close-curly)
-	("=" . awesome-pair-equal)
-	("%" . awesome-pair-match-paren)
-	("\"" . awesome-pair-double-quote)
-	("SPC" . awesome-pair-space)
-	("M-o" . awesome-pair-backward-delete)
-	("C-d" . awesome-pair-forward-delete)
-	("C-k" . awesome-pair-kill)
-	("M-\"" . awesome-pair-wrap-double-quote)
-	("M-[" . awesome-pair-wrap-bracket)
-	("M-{" . awesome-pair-wrap-curly)
-	("M-(" . awesome-pair-wrap-round)
-	("M-)" . awesome-pair-unwrap)
-	("M-p" . awesome-pair-jump-right)
-	("M-n" . awesome-pair-jump-left)
-	("M-:" . awesome-pair-jump-out-pair-and-newline)))
+;; (use-package awesome-pair
+;;   :load-path "~/.emacs.d/plugin/awesome-pair"
+;;   :ensure nil
+;;   :hook
+;;   (emacs-lisp-mode . awesome-pair-mode)
+;;   (c-mode-common . awesome-pair-mode)
+;;   (c-mode . awesome-pair-mode)
+;;   (c++-mode . awesome-pair-mode)
+;;   (java-mode . awesome-pair-mode)
+;;   (haskell-mode . awesome-pair-mode)
+;;   (emacs-lisp-mode . awesome-pair-mode)
+;;   (lisp-interaction-mode . awesome-pair-mode)
+;;   (lisp-mode . awesome-pair-mode)
+;;   (maxima-mode . awesome-pair-mode)
+;;   (ielm-mode . awesome-pair-mode)
+;;   (sh-mode . awesome-pair-mode)
+;;   (makefile-gmake-mode . awesome-pair-mode)
+;;   (php-mode . awesome-pair-mode)
+;;   (python-mode . awesome-pair-mode)
+;;   (js-mode . awesome-pair-mode)
+;;   (go-mode . awesome-pair-mode)
+;;   (qml-mode . awesome-pair-mode)
+;;   (jade-mode . awesome-pair-mode)
+;;   (css-mode . awesome-pair-mode)
+;;   (ruby-mode . awesome-pair-mode)
+;;   (coffee-mode . awesome-pair-mode)
+;;   (rust-mode . awesome-pair-mode)
+;;   (qmake-mode . awesome-pair-mode)
+;;   (lua-mode . awesome-pair-mode)
+;;   (swift-mode . awesome-pair-mode)
+;;   (minibuffer-inactive-mode . awesome-pair-mode)
+;;   :bind
+;;   (:map awesome-pair-mode-map
+;; 	("(" . awesome-pair-open-round)
+;; 	("[" . awesome-pair-open-bracket)
+;; 	("{" . awesome-pair-open-curly)
+;; 	(")" . awesome-pair-close-round)
+;; 	("]" . awesome-pair-close-bracket)
+;; 	("}" . awesome-pair-close-curly)
+;; 	("=" . awesome-pair-equal)
+;; 	("%" . awesome-pair-match-paren)
+;; 	("\"" . awesome-pair-double-quote)
+;; 	("SPC" . awesome-pair-space)
+;; 	("M-o" . awesome-pair-backward-delete)
+;; 	("C-d" . awesome-pair-forward-delete)
+;; 	("C-k" . awesome-pair-kill)
+;; 	("M-\"" . awesome-pair-wrap-double-quote)
+;; 	("M-[" . awesome-pair-wrap-bracket)
+;; 	("M-{" . awesome-pair-wrap-curly)
+;; 	("M-(" . awesome-pair-wrap-round)
+;; 	("M-)" . awesome-pair-unwrap)
+;; 	("M-p" . awesome-pair-jump-right)
+;; 	("M-n" . awesome-pair-jump-left)
+;; 	("M-:" . awesome-pair-jump-out-pair-and-newline)))
 
 ;; http://lifegoo.pluskid.org/wiki/EnhanceDired.html
 (use-package dired
