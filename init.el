@@ -1,6 +1,7 @@
 (require 'package)
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+(setq package-archives '(("melpa"   . "https://melpa.org/packages/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")))
+
 (package-initialize)
 
 (setq package-list '(use-package))
