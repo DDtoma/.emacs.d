@@ -1,16 +1,34 @@
 (use-package lsp-mode
+  :diminish
   :ensure t
-  :hook (prog-mode . lsp-deferred)
+
+  :commands (lsp-enable-which-key-integration
+	     lsp-format-buffer
+	     lsp-organize-imports
+	     lsp-install-server)
+
+  :hook ((prog-mode . (lambda ()
+                             (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode 'makefile-mode)
+                               (lsp-deferred))))
+              (markdown-mode . lsp-deferred)
+              (lsp-mode . (lambda ()
+                            ;; Integrate `which-key'
+                            (lsp-enable-which-key-integration)
+
+                            ;; Format and organize imports
+                            (unless (apply #'derived-mode-p centaur-lsp-format-on-save-ignore-modes)
+                              (add-hook 'before-save-hook #'lsp-format-buffer t t)
+                              (add-hook 'before-save-hook #'lsp-organize-imports t t)))))
+
   :bind (:map lsp-mode-map
-	      ("C-c C-d" . lsp-describe-thing-at-point))
-  :init (setq lsp-auto-guess-root t       ; Detect project root
-	      lsp-prefer-flymake nil      ; Use lsp-ui and flycheck
-	      flymake-fringe-indicator-position 'right-fringe)
-  :config
-  ;; Configure LSP clients
-  (use-package lsp-clients
-    :ensure nil
-    :init (setq lsp-clients-python-library-directories '("/usr/local/" "/usr/"))))
+              ("C-c C-d" . lsp-describe-thing-at-point)
+              ([remap xref-find-definitions] . lsp-find-definition)
+              ([remap xref-find-references] . lsp-find-references))
+  :init
+  ;; @see https://emacs-lsp.github.io/lsp-mode/page/performance
+  (setq read-process-output-max (* 1024 1024)) ;; 1MB
+
+  )
 
 (use-package lsp-ui
   :ensure t
