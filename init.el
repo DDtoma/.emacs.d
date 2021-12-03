@@ -1,10 +1,11 @@
+;; config use-package
 (require 'package)
 (setq package-archives '(("melpa"   . "https://melpa.org/packages/")
 			 ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
-(setq package-list '(use-package))
+(setq package-list '(use-package quelpa quelpa-use-package))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -12,6 +13,11 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+
+;; config quelpa
+(require 'quelpa)
+(require 'quelpa-use-package)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
@@ -38,8 +44,6 @@
 (require 'init-git)
 ;; (require 'init-flycheck)
 (require 'init-tools)
-(require 'init-eaf)
-
 
 ;; Language
 (require 'init-c)
@@ -49,3 +53,4 @@
 (require 'init-keymap)
 
 (require 'init-tmp)
+;; (require 'init-eaf)

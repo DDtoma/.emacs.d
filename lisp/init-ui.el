@@ -76,7 +76,7 @@
   )
 
 ;; (use-package awesome-tray
-;;   :load-path "~/.emacs.d/plugin/awesome-tray"
+;;   :quelpa (awesome-tray :fetcher github :repo "manateelazycat/awesome-tray")
 ;;   :ensure nil
 ;;   :if (display-graphic-p)
 ;;   :config

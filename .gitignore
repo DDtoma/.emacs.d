@@ -19,6 +19,7 @@ url/
 nox/
 plugin/
 eaf/
+quelpa/
 
 .DS_Store
 custom.el

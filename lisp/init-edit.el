@@ -29,13 +29,20 @@
 ;;   ("C-<" . mc/mark-previous-like-this)
 ;;   ("C-c C-<" . mc/mark-all-like-this))
 
-;; (use-package smartparens
-;;   :ensure t
-;;   :bind
-;;   ("C-c k" . sp-kill-hybrid-sexp)
-;;   ("C-c r" . sp-rewrap-sexp)
-;;   ("C-c d" . sp-unwrap-sexp)
-;;   )
+(use-package paren
+  :ensure nil
+  :hook (after-init . show-paren-mode)
+  :config
+  (setq show-paren-when-point-inside-paren t
+        show-paren-when-point-in-periphery t))
+
+(use-package smartparens
+  :ensure t
+  :bind
+  ("C-c k" . sp-kill-hybrid-sexp)
+  ("C-c r" . sp-rewrap-sexp)
+  ("C-c d" . sp-unwrap-sexp)
+  )
 
 ;; https://github.com/leoliu/easy-kill
 ;; https://github.com/knu/easy-kill-extras.el
@@ -78,11 +85,6 @@
 ;; 				(?F string-up-to-char-forward "")
 ;; 				(?t string-to-char-backward "")
 ;; 				(?T string-up-to-char-backward ""))))
-
-;; (use-package hungry-delete
-;;   :ensure t
-;;   :bind
-;;   ("M-|" . hungry-delete-backward))
 
 (use-package smart-hungry-delete
   :ensure t

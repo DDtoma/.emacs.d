@@ -7,7 +7,7 @@
 
 ;; (use-package snails
 ;;   :if (display-graphic-p)
-;;   :load-path "~/.emacs.d/plugin/snails"
+;;   :quelpa (snails :fetcher github :repo "manateelazycat/snails")
 ;;   :config
 ;;   (push 'snails snails-backend-imenu)
 ;;   (push 'snails snails-backend-rg)	;ripgrep
@@ -16,8 +16,8 @@
 ;;   (when (eq system-type 'windows-nt)
 ;;     (push 'snails snails-backend-everything))
 ;;   :bind (:map llight//global-map
-;;	      ("S s" . snails)
-;;	      ("S p" . snails-search-point)))
+;; 	      ("S s" . snails)
+;; 	      ("S p" . snails-search-point)))
 
 (use-package sudo-edit
   :ensure t)

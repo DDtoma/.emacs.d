@@ -1,22 +1,14 @@
-;; auto pair
-;;; http://ergoemacs.org/emacs/emacs_insert_brackets_by_pair.html
-;; (electric-pair-mode 1)
-;; (setq electric-pair-pairs '(
-;;			    (?\{ . ?\})
-;;			    (?\< . ?\>)
-;;			    ))
-
 (use-package emacs
   :ensure nil
   :init
   (setq inhibit-startup-screen t
-	initial-scratch-message nil
-	sentence-end-double-space nil
-	ring-bell-function 'ignore
-	frame-resize-pixelwise t)
+        initial-scratch-message nil
+        sentence-end-double-space nil
+        ring-bell-function 'ignore
+        frame-resize-pixelwise t)
 
   (setq user-full-name "llight"
-	user-mail-address "ll66456645@163.com")
+        user-mail-address "ll66456645@163.com")
 
   (setq read-process-output-max (* 1024 1024))
 
@@ -24,8 +16,8 @@
 
   (set-charset-priority 'unicode)
   (setq locale-coding-system 'utf-8
-	coding-system-for-read 'utf-8
-	coding-system-for-write 'utf-8)
+        coding-system-for-read 'utf-8
+        coding-system-for-write 'utf-8)
 
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
@@ -43,9 +35,9 @@
   (display-time-mode -1)
   (setq column-number-mode t)
 
-  (setq-default indent-tabs-mode t)
-  (setq-default tab-width 4)
-  (setq tab-always-indent 'complete)
+  (setq-default indent-tabs-mode nil)
+  ;; (setq-default tab-width 4)
+  ;; (setq tab-always-indent 'complete)
   )
 
 
@@ -53,18 +45,18 @@
   :ensure nil
   :hook (after-init . recentf-mode)
   :init (setq recentf-max-saved-items 200
-	      recentf-exclude '((expand-file-name package-user-dir)
-				".cache"
-				".cask"
-				".elfeed"
-				"bookmarks"
-				"cache"
-				"ido.*"
-				"persp-confs"
-				"recentf"
-				"undo-tree-hist"
-				"url"
-				"COMMIT_EDITMSG\\'")))
+              recentf-exclude '((expand-file-name package-user-dir)
+                                ".cache"
+                                ".cask"
+                                ".elfeed"
+                                "bookmarks"
+                                "cache"
+                                "ido.*"
+                                "persp-confs"
+                                "recentf"
+                                "undo-tree-hist"
+                                "url"
+                                "COMMIT_EDITMSG\\'")))
 
 (use-package windmove
   :ensure nil
@@ -82,8 +74,8 @@
   (defun hideshow-folded-overlay-fn (ov)
     (when (eq 'code (overlay-get ov 'hs))
       (let* ((nlines (count-lines (overlay-start ov) (overlay-end ov)))
-	     (info (format " ... #%d " nlines)))
-	(overlay-put ov 'display (propertize info 'face hideshow-folded-face)))))
+             (info (format " ... #%d " nlines)))
+        (overlay-put ov 'display (propertize info 'face hideshow-folded-face)))))
   (setq hs-set-up-overlay 'hideshow-folded-overlay-fn))
 
 (use-package whitespace
@@ -92,7 +84,7 @@
   :config
   ;; Don't use different background for tabs.
   (face-spec-set 'whitespace-tab
-		 '((t :background unspecified)))
+                 '((t :background unspecified)))
   ;; Only use background and underline for long lines, so we can still have
   ;; syntax highlight.
 
@@ -101,20 +93,20 @@
   ;; whitespace.el.  Anyway, we have to manually set some attribute to
   ;; unspecified here.
   (face-spec-set 'whitespace-line
-		 '((((background light))
-		    :background "#d8d8d8" :foreground unspecified
-		    :underline t :weight unspecified)
-		   (t
-		    :background "#404040" :foreground unspecified
-		    :underline t :weight unspecified)))
+                 '((((background light))
+                    :background "#d8d8d8" :foreground unspecified
+                    :underline t :weight unspecified)
+                   (t
+                    :background "#404040" :foreground unspecified
+                    :underline t :weight unspecified)))
 
   ;; Use softer visual cue for space before tabs.
   (face-spec-set 'whitespace-space-before-tab
-		 '((((background light))
-		    :background "#d8d8d8" :foreground "#de4da1")
-		   (t
-		    :inherit warning
-		    :background "#404040" :foreground "#ee6aa7")))
+                 '((((background light))
+                    :background "#d8d8d8" :foreground "#de4da1")
+                   (t
+                    :inherit warning
+                    :background "#404040" :foreground "#ee6aa7")))
 
   (setq
    whitespace-line-column nil
@@ -147,60 +139,62 @@
   :ensure nil
   :hook (after-init . global-auto-revert-mode))
 
-;; (use-package awesome-pair
-;;   :load-path "~/.emacs.d/plugin/awesome-pair"
-;;   :ensure nil
-;;   :hook
-;;   (emacs-lisp-mode . awesome-pair-mode)
-;;   (c-mode-common . awesome-pair-mode)
-;;   (c-mode . awesome-pair-mode)
-;;   (c++-mode . awesome-pair-mode)
-;;   (java-mode . awesome-pair-mode)
-;;   (haskell-mode . awesome-pair-mode)
-;;   (emacs-lisp-mode . awesome-pair-mode)
-;;   (lisp-interaction-mode . awesome-pair-mode)
-;;   (lisp-mode . awesome-pair-mode)
-;;   (maxima-mode . awesome-pair-mode)
-;;   (ielm-mode . awesome-pair-mode)
-;;   (sh-mode . awesome-pair-mode)
-;;   (makefile-gmake-mode . awesome-pair-mode)
-;;   (php-mode . awesome-pair-mode)
-;;   (python-mode . awesome-pair-mode)
-;;   (js-mode . awesome-pair-mode)
-;;   (go-mode . awesome-pair-mode)
-;;   (qml-mode . awesome-pair-mode)
-;;   (jade-mode . awesome-pair-mode)
-;;   (css-mode . awesome-pair-mode)
-;;   (ruby-mode . awesome-pair-mode)
-;;   (coffee-mode . awesome-pair-mode)
-;;   (rust-mode . awesome-pair-mode)
-;;   (qmake-mode . awesome-pair-mode)
-;;   (lua-mode . awesome-pair-mode)
-;;   (swift-mode . awesome-pair-mode)
-;;   (minibuffer-inactive-mode . awesome-pair-mode)
-;;   :bind
-;;   (:map awesome-pair-mode-map
-;; 	("(" . awesome-pair-open-round)
-;; 	("[" . awesome-pair-open-bracket)
-;; 	("{" . awesome-pair-open-curly)
-;; 	(")" . awesome-pair-close-round)
-;; 	("]" . awesome-pair-close-bracket)
-;; 	("}" . awesome-pair-close-curly)
-;; 	("=" . awesome-pair-equal)
-;; 	("%" . awesome-pair-match-paren)
-;; 	("\"" . awesome-pair-double-quote)
-;; 	("SPC" . awesome-pair-space)
-;; 	("M-o" . awesome-pair-backward-delete)
-;; 	("C-d" . awesome-pair-forward-delete)
-;; 	("C-k" . awesome-pair-kill)
-;; 	("M-\"" . awesome-pair-wrap-double-quote)
-;; 	("M-[" . awesome-pair-wrap-bracket)
-;; 	("M-{" . awesome-pair-wrap-curly)
-;; 	("M-(" . awesome-pair-wrap-round)
-;; 	("M-)" . awesome-pair-unwrap)
-;; 	("M-p" . awesome-pair-jump-right)
-;; 	("M-n" . awesome-pair-jump-left)
-;; 	("M-:" . awesome-pair-jump-out-pair-and-newline)))
+(use-package awesome-pair
+  :defer nil
+  :quelpa ((awesome-pair :fetcher github :repo "manateelazycat/awesome-pair") :upgrade nil)
+  ;; :load-path "~/.emacs.d/plugin/awesome-pair"
+  ;; :ensure nil
+  :hook
+  (emacs-lisp-mode . awesome-pair-mode)
+  (c-mode-common . awesome-pair-mode)
+  (c-mode . awesome-pair-mode)
+  (c++-mode . awesome-pair-mode)
+  (java-mode . awesome-pair-mode)
+  (haskell-mode . awesome-pair-mode)
+  (emacs-lisp-mode . awesome-pair-mode)
+  (lisp-interaction-mode . awesome-pair-mode)
+  (lisp-mode . awesome-pair-mode)
+  (maxima-mode . awesome-pair-mode)
+  (ielm-mode . awesome-pair-mode)
+  (sh-mode . awesome-pair-mode)
+  (makefile-gmake-mode . awesome-pair-mode)
+  (php-mode . awesome-pair-mode)
+  (python-mode . awesome-pair-mode)
+  (js-mode . awesome-pair-mode)
+  (go-mode . awesome-pair-mode)
+  (qml-mode . awesome-pair-mode)
+  (jade-mode . awesome-pair-mode)
+  (css-mode . awesome-pair-mode)
+  (ruby-mode . awesome-pair-mode)
+  (coffee-mode . awesome-pair-mode)
+  (rust-mode . awesome-pair-mode)
+  (qmake-mode . awesome-pair-mode)
+  (lua-mode . awesome-pair-mode)
+  (swift-mode . awesome-pair-mode)
+  (minibuffer-inactive-mode . awesome-pair-mode)
+  :bind
+  (:map awesome-pair-mode-map
+	("(" . awesome-pair-open-round)
+	("[" . awesome-pair-open-bracket)
+	("{" . awesome-pair-open-curly)
+	(")" . awesome-pair-close-round)
+	("]" . awesome-pair-close-bracket)
+	("}" . awesome-pair-close-curly)
+	("=" . awesome-pair-equal)
+	("%" . awesome-pair-match-paren)
+	("\"" . awesome-pair-double-quote)
+	("SPC" . awesome-pair-space)
+	("M-o" . awesome-pair-backward-delete)
+	("C-d" . awesome-pair-forward-delete)
+	("C-k" . awesome-pair-kill)
+	("M-\"" . awesome-pair-wrap-double-quote)
+	("M-[" . awesome-pair-wrap-bracket)
+	("M-{" . awesome-pair-wrap-curly)
+	("M-(" . awesome-pair-wrap-round)
+	("M-)" . awesome-pair-unwrap)
+	("M-p" . awesome-pair-jump-right)
+	("M-n" . awesome-pair-jump-left)
+	("M-:" . awesome-pair-jump-out-pair-and-newline)))
 
 ;; http://lifegoo.pluskid.org/wiki/EnhanceDired.html
 (use-package dired
