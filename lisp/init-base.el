@@ -142,11 +142,23 @@
 (use-package isearch
   :ensure nil
   :bind (:map isearch-mode-map
-         ([remap isearch-delete-char] . isearch-del-char))
+              ([remap isearch-delete-char] . isearch-del-char)
+              ([return] . my/isearch-repeat)
+              ([escape] . isearch-exit)
+              )
   :custom
   (isearch-lazy-count t)
   (lazy-count-prefix-format "%s/%s ")
-  (lazy-highlight-cleanup nil))
+  (lazy-highlight-cleanup nil)
+  :config
+  (defvar my/isearch--direction nil)
+  (define-advice isearch-exit (:after nil)
+    (setq-local my/isearch--direction nil))
+  (define-advice isearch-repeat-forward (:after (_))
+    (setq-local my/isearch--direction 'forward))
+  (define-advice isearch-repeat-backward (:after (_))
+    (setq-local my/isearch--direction 'backward))
+  )
 
 (use-package awesome-pair
   :defer nil
