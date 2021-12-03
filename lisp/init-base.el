@@ -139,11 +139,18 @@
   :ensure nil
   :hook (after-init . global-auto-revert-mode))
 
+(use-package isearch
+  :ensure nil
+  :bind (:map isearch-mode-map
+         ([remap isearch-delete-char] . isearch-del-char))
+  :custom
+  (isearch-lazy-count t)
+  (lazy-count-prefix-format "%s/%s ")
+  (lazy-highlight-cleanup nil))
+
 (use-package awesome-pair
   :defer nil
   :quelpa ((awesome-pair :fetcher github :repo "manateelazycat/awesome-pair") :upgrade nil)
-  ;; :load-path "~/.emacs.d/plugin/awesome-pair"
-  ;; :ensure nil
   :hook
   (emacs-lisp-mode . awesome-pair-mode)
   (c-mode-common . awesome-pair-mode)
