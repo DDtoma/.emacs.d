@@ -52,4 +52,7 @@
 	("D P" . youdao-dictionary-search-at-point)
 	("D v" . youdao-dictionary-play-voice-at-point)))
 
+(use-package memory-usage
+  :ensure t)
+
 (provide 'init-tools)
