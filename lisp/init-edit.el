@@ -86,13 +86,13 @@
 ;; 				(?t string-to-char-backward "")
 ;; 				(?T string-up-to-char-backward ""))))
 
-(use-package smart-hungry-delete
-  :ensure t
-  :bind (("<backspace>" . smart-hungry-delete-backward-char)
-		 ("C-d" . smart-hungry-delete-forward-char))
-  :defer nil ;; dont defer so we can add our functions to hooks
-  :config (smart-hungry-delete-add-default-hooks)
-  )
+;; (use-package smart-hungry-delete
+;;   :ensure t
+;;   :bind (("<backspace>" . smart-hungry-delete-backward-char)
+;; 		 ("C-d" . smart-hungry-delete-forward-char))
+;;   :defer nil ;; dont defer so we can add our functions to hooks
+;;   :config (smart-hungry-delete-add-default-hooks)
+;;   )
 
 ;; https://github.com/manateelazycat/color-rg
 (use-package color-rg
@@ -100,8 +100,7 @@
   :commands (color-rg-search-input)
   :quelpa (color-rg :fetcher github :repo "manateelazycat/color-rg")
   :bind
-  (:map isearch-mode-map
-        ("M-s M-s" . isearch-toggle-color-rg))
+  ("M-s M-s" . isearch-toggle-color-rg)
   )
 
 (use-package nxml-mode

@@ -5,15 +5,15 @@
 ;; set default font size
 ;; (set-face-attribute 'default nil :height 120)
 
-(when (eq system-type 'gnu/linux)
-      (setq fonts '("Sarasa Nerd Font" "Sarasa Nerd Font"))
-      (set-face-attribute 'default nil :font
-			(format "%s:pixelsize=%d" (car fonts) 20))
-      (setq face-font-rescale-alist '(("Sarasa Nerd Font". 1.0))))
+;; (when (eq system-type 'gnu/linux)
+;;      (setq fonts '("Sarasa Nerd Font" "Sarasa Nerd Font"))
+;;      (set-face-attribute 'default nil :font
+;;			(format "%s:pixelsize=%d" (car fonts) 20))
+;;      (setq face-font-rescale-alist '(("Sarasa Nerd Font". 1.0))))
 
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset
-			(font-spec :family (car (cdr fonts)))))
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;      (set-fontset-font (frame-parameter nil 'font) charset
+;;			(font-spec :family (car (cdr fonts)))))
 
 ;; setup frame size in system desktop
 (when (display-graphic-p)
