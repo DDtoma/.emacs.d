@@ -20,6 +20,8 @@ nox/
 plugin/
 eaf/
 quelpa/
+persistent-scratch/
+eln-cache/
 
 .DS_Store
 custom.el
@@ -33,3 +35,5 @@ tramp
 projectile.cache
 .git-breakpoints
 bookmarks
+fonts.scale
+.persistent-scratch
