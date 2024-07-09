@@ -1,11 +1,11 @@
 ;; config use-package
 (require 'package)
 (setq package-archives '(("melpa"   . "https://melpa.org/packages/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
-(setq package-list '(use-package quelpa quelpa-use-package))
+(setq package-list '(use-package))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -14,10 +14,22 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
-;; config quelpa
-(require 'quelpa)
-(require 'quelpa-use-package)
+;; init straight
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://radian-software.github.io/straight.el/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
@@ -47,7 +59,7 @@
 
 ;; Language
 (require 'init-c)
-(require 'init-java)
+;; (require 'init-java)
 (require 'init-python)
 ;; (require 'init-json)
 (require 'init-keymap)

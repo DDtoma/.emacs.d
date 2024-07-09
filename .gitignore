@@ -22,6 +22,8 @@ eaf/
 quelpa/
 persistent-scratch/
 eln-cache/
+straight/
+ds-pinyin/
 
 .DS_Store
 custom.el

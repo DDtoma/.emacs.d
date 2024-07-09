@@ -98,7 +98,8 @@
 (use-package color-rg
   :defer nil
   :commands (color-rg-search-input)
-  :quelpa (color-rg :fetcher github :repo "manateelazycat/color-rg")
+  ;; :quelpa (color-rg :fetcher github :repo "manateelazycat/color-rg")
+  :straight (color-rg :type git :host github :repo "manateelazycat/color-rg")
   :bind
   ("M-s M-s" . isearch-toggle-color-rg)
   )

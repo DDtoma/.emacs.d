@@ -1,7 +1,8 @@
 (use-package eaf
   :if sys/linux-x-p
   :ensure nil
-  :quelpa ((eaf :fetcher github :repo "emacs-eaf/emacs-application-framework") :upgrade nil)
+  ;; :quelpa ((eaf :fetcher github :repo "emacs-eaf/emacs-application-framework") :upgrade nil)
+  :straight (eaf :type git :host github :repo "emacs-eaf/emacs-application-framework")
   ;; :load-path "~/.emacs.d/plugin/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
   :custom
   (eaf-browser-continue-where-left-off t)

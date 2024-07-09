@@ -36,8 +36,8 @@
   (setq column-number-mode t)
 
   (setq-default indent-tabs-mode nil)
-  ;; (setq-default tab-width 4)
-  ;; (setq tab-always-indent 'complete)
+  (setq-default tab-width 4)
+  (setq tab-always-indent 'complete)
   )
 
 
@@ -162,7 +162,8 @@
 
 (use-package awesome-pair
   :defer nil
-  :quelpa ((awesome-pair :fetcher github :repo "manateelazycat/awesome-pair") :upgrade nil)
+  ;; :quelpa ((awesome-pair :fetcher github :repo "manateelazycat/awesome-pair") :upgrade nil)
+  :straight (awesome-pair :type git :host github :repo "manateelazycat/awesome-pair")
   :hook
   (emacs-lisp-mode . awesome-pair-mode)
   (c-mode-common . awesome-pair-mode)
@@ -193,30 +194,128 @@
   (minibuffer-inactive-mode . awesome-pair-mode)
   :bind
   (:map awesome-pair-mode-map
-	("(" . awesome-pair-open-round)
-	("[" . awesome-pair-open-bracket)
-	("{" . awesome-pair-open-curly)
-	(")" . awesome-pair-close-round)
-	("]" . awesome-pair-close-bracket)
-	("}" . awesome-pair-close-curly)
-	("=" . awesome-pair-equal)
-	("%" . awesome-pair-match-paren)
-	("\"" . awesome-pair-double-quote)
-	("SPC" . awesome-pair-space)
-	("M-o" . awesome-pair-backward-delete)
-	("C-d" . awesome-pair-forward-delete)
-	("C-k" . awesome-pair-kill)
-	("M-\"" . awesome-pair-wrap-double-quote)
-	("M-[" . awesome-pair-wrap-bracket)
-	("M-{" . awesome-pair-wrap-curly)
-	("M-(" . awesome-pair-wrap-round)
-	("M-)" . awesome-pair-unwrap)
-	("M-p" . awesome-pair-jump-right)
-	("M-n" . awesome-pair-jump-left)
-	("M-:" . awesome-pair-jump-out-pair-and-newline)))
+        ("(" . awesome-pair-open-round)
+        ("[" . awesome-pair-open-bracket)
+        ("{" . awesome-pair-open-curly)
+        (")" . awesome-pair-close-round)
+        ("]" . awesome-pair-close-bracket)
+        ("}" . awesome-pair-close-curly)
+        ("=" . awesome-pair-equal)
+        ("%" . awesome-pair-match-paren)
+        ("\"" . awesome-pair-double-quote)
+        ("S-SPC" . awesome-pair-space)
+        ("M-o" . awesome-pair-backward-delete)
+        ("C-d" . awesome-pair-forward-delete)
+        ("C-k" . awesome-pair-kill)
+        ("M-\"" . awesome-pair-wrap-double-quote)
+        ("M-[" . awesome-pair-wrap-bracket)
+        ("M-{" . awesome-pair-wrap-curly)
+        ("M-(" . awesome-pair-wrap-round)
+        ("M-)" . awesome-pair-unwrap)
+        ("M-p" . awesome-pair-jump-right)
+        ("M-n" . awesome-pair-jump-left)
+        ("M-:" . awesome-pair-jump-out-pair-and-newline))
+  )
 
-;; http://lifegoo.pluskid.org/wiki/EnhanceDired.html
+(use-package meow
+  :ensure t
+  :init
+  (meow-global-mode 1)
+  :config
+  (defun meow-setup ()
+    (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+    (meow-motion-overwrite-define-key
+      '("j" . meow-next)
+      '("k" . meow-prev))
+    (meow-leader-define-key
+      ;; SPC j/k will run the original command in MOTION state.
+      '("j" . "H-j")
+      '("k" . "H-k")
+      ;; Use SPC (0-9) for digit arguments.
+      '("1" . meow-digit-argument)
+      '("2" . meow-digit-argument)
+      '("3" . meow-digit-argument)
+      '("4" . meow-digit-argument)
+      '("5" . meow-digit-argument)
+      '("6" . meow-digit-argument)
+      '("7" . meow-digit-argument)
+      '("8" . meow-digit-argument)
+      '("9" . meow-digit-argument)
+      '("0" . meow-digit-argument)
+      '("/" . meow-keypad-describe-key)
+      '("?" . meow-cheatsheet))
+    (meow-normal-define-key
+      '("0" . meow-expand-0)
+      '("9" . meow-expand-9)
+      '("8" . meow-expand-8)
+      '("7" . meow-expand-7)
+      '("6" . meow-expand-6)
+      '("5" . meow-expand-5)
+      '("4" . meow-expand-4)
+      '("3" . meow-expand-3)
+      '("2" . meow-expand-2)
+      '("1" . meow-expand-1)
+      '("-" . negative-argument)
+      '(";" . meow-reverse)
+      '("," . meow-inner-of-thing)
+      '("." . meow-bounds-of-thing)
+      '("[" . meow-beginning-of-thing)
+      '("]" . meow-end-of-thing)
+      '("a" . meow-append)
+      '("A" . meow-open-below)
+      '("b" . meow-back-word)
+      '("B" . meow-back-symbol)
+      '("c" . meow-change)
+      '("d" . meow-delete)
+      '("D" . meow-backward-delete)
+      '("e" . meow-next-word)
+      '("E" . meow-next-symbol)
+      '("f" . meow-find)
+      '("g" . meow-cancel-selection)
+      '("G" . meow-grab)
+      '("h" . meow-left)
+      '("H" . meow-left-expand)
+      '("i" . meow-insert)
+      '("I" . meow-open-above)
+      '("j" . meow-next)
+      '("J" . meow-next-expand)
+      '("k" . meow-prev)
+      '("K" . meow-prev-expand)
+      '("l" . meow-right)
+      '("L" . meow-right-expand)
+      '("m" . meow-join)
+      '("n" . meow-search)
+      '("o" . meow-block)
+      '("O" . meow-to-block)
+      '("p" . meow-yank)
+      '("q" . meow-quit)
+      '("Q" . meow-goto-line)
+      '("r" . meow-replace)
+      '("R" . meow-swap-grab)
+      '("s" . meow-kill)
+      '("t" . meow-till)
+      '("u" . meow-undo)
+      '("U" . meow-undo-in-selection)
+      '("v" . meow-visit)
+      '("w" . meow-mark-word)
+      '("W" . meow-mark-symbol)
+      '("x" . meow-line)
+      '("X" . meow-goto-line)
+      '("y" . meow-save)
+      '("Y" . meow-sync-grab)
+      '("z" . meow-pop-selection)
+      '("'" . repeat)
+      '("<escape>" . mode-line-other-buffer)))
+  (meow-setup)
+  (meow-setup-line-number)
+  (meow-setup-indicator)
+  (delete-selection-mode -1)
+  )
+
 (use-package dired
+  :ensure nil
+  :custom
+  (dired-kill-when-opening-new-dired-buffer t)
   :config
   ;; dired - reuse current buffer by pressing 'a'
   (put 'dired-find-alternate-file 'disabled nil)
@@ -229,23 +328,24 @@
   ;; enable some really cool extensions like C-x C-j(dired-jump)
   (require 'dired-x))
 
+
 (use-package ace-window
   :ensure t
   :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind
   (:map llight//global-map
-	("w w" . ace-window)))
+        ("w w" . ace-window)))
 
-(use-package dired-single
-    :ensure t
-    :init
-    (defun my-dired-init ()
-      (define-key dired-mode-map [return] 'dired-single-buffer)
-      (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
-      (define-key dired-mode-map "^" 'dired-single-up-directory))
-    :hook
-    (dired-mode . my-dired-init))
+;; (use-package dired-single
+;;     :ensure t
+;;     :init
+;;     (defun my-dired-init ()
+;;       (define-key dired-mode-map [return] 'dired-single-buffer)
+;;       (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
+;;       (define-key dired-mode-map "^" 'dired-single-up-directory))
+;;     :hook
+;;     (dired-mode . my-dired-init))
 
 (use-package ivy
   :ensure t
@@ -294,42 +394,63 @@
   :config
 
   (setq ibuffer-formats
-	'((mark modified read-only " "
-		(name 18 18 :left :elide)
-		" "
-		(size 9 -1 :right)
-		" "
-		(mode 16 16 :left :elide)
-		" "
-		project-relative-file)))
+        '((mark modified read-only " "
+                (name 18 18 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                project-relative-file)))
   :hook
   (ibuffer . (lambda ()
-	       (ibuffer-projectile-set-filter-groups)
-	       (unless (eq ibuffer-sorting-mode 'alphabetic)
-		 (ibuffer-do-sort-by-alphabetic)))))
+               (ibuffer-projectile-set-filter-groups)
+               (unless (eq ibuffer-sorting-mode 'alphabetic)
+                 (ibuffer-do-sort-by-alphabetic)))))
 
+;; 新手教程https://github.com/condy0919/emacs-newbie/blob/master/introduction-to-ivy.md
 (use-package counsel
   :ensure t
   :init
   (when (commandp 'counsel-M-x)
     (global-set-key [remap execute-extended-command] #'counsel-M-x))
+  :config
+  ;; 设置补全方式
+  ;; ivy--regex
+  ;; ivy--regex-plus
+  ;; ivy--regex-ignore-order
+  ;; ivy--regex-fuzzy
+  ;; regexp-quote
+  (setq ivy-re-builders-alist '((t . ivy--regex-plus)))
+  ;; 修改初始化输入，去掉开头的^
+  (ivy-configure 'counsel-M-x
+    :initial-input ""
+    :display-transformer-fn #'counsel-M-x-transformer)
+  ;; 增加自己的 ivy action
+  (ivy-set-actions
+   'counsel-find-file
+   '(("d" delete-file "delete")
+     ("r" rename-file "rename")
+     ("x" counsel-find-file-as-root "open as root")))
   :bind
   ("M-x" . counsel-M-x)
   ("C-x C-f" . counsel-find-file)
   ("M-y" . counsel-yank-pop)
   (:map llight//global-map
-	("s f" . counsel-fzf)
-	("s a" . counsel-ag)
-	("s r" . counsel-rg)
-	("s k" . counsel-ack)
-	("s c" . counsel-cd)
-	("s K" . counsel-describes)
-	("s e" . counsel-minor)
-	("s i" . counsel-imenu)
-	("f r" . counsel-recentf)
-	("f b" . counsel-bookmark)
-	("f f" . counsel-find-file)
-	("x" . counsel-M-x)))
+        ("s f" . counsel-fzf)
+        ("s a" . counsel-ag)
+        ("s r" . counsel-rg)
+        ("s k" . counsel-ack)
+        ("s c" . counsel-cd)
+        ("s K" . counsel-describes)
+        ("s e" . counsel-minor)
+        ("s i" . counsel-imenu)
+        ("f r" . counsel-recentf)
+        ("f b" . counsel-bookmark)
+        ("f f" . counsel-find-file)
+        ("x" . counsel-M-x)
+        )
+  )
 
 (use-package counsel-projectile
   :ensure t
@@ -338,11 +459,11 @@
   (counsel-projectile-mode +1)
   :bind
   (:map llight//global-map
-	("p f" . counsel-projectile-find-file)
-	("p d" . counsel-projectile-find-dir)
-	("p c" . counsel-projectile-switch-project)
-	("p s a" . counsel-projectile-ag)
-	("p s g" . counsel-projectile-grep)))
+        ("p f" . counsel-projectile-find-file)
+        ("p d" . counsel-projectile-find-dir)
+        ("p c" . counsel-projectile-switch-project)
+        ("p s a" . counsel-projectile-ag)
+        ("p s g" . counsel-projectile-grep)))
 
 (use-package diminish
   :ensure t)

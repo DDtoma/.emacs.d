@@ -87,8 +87,10 @@
   :if (display-graphic-p)
   :hook (after-init . global-hl-line-mode))
 
-(use-package zenburn-theme
-	:ensure t
-	:config (load-theme 'zenburn t))
+(use-package timu-caribbean-theme
+  :ensure t
+  :config (load-theme 'timu-caribbean t))
+
+
 
 (provide 'init-ui)
