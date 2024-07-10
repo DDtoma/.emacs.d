@@ -28,14 +28,14 @@
   :after ivy
   :bind
   (:map llight//global-map
-	("h p" . helpful-at-point))
+        ("h p" . helpful-at-point))
   :config
   (with-eval-after-load 'ivy
     (dolist (cmd '(helpful-callable
-		   helpful-variable
-		   helpful-function
-		   helpful-macro
-		   helpful-command))
+                   helpful-variable
+                   helpful-function
+                   helpful-macro
+                   helpful-command))
       (cl-pushnew `(,cmd . "^") ivy-initial-inputs-alist))))
 
 (use-package web-search
@@ -46,11 +46,15 @@
 
 (use-package youdao-dictionary
   :ensure t
+  :config
+  (setq youdao-dictionary-app-key "649f058f9b9b0472"
+        youdao-dictionary-secret-key "vygjnzLXI1piI4bXeCr8GOE7TsXl1vBs"
+        url-automatic-caching t)
   :bind
   (:map llight//global-map
-	("D p" . youdao-dictionary-search-at-point+)
-	("D P" . youdao-dictionary-search-at-point)
-	("D v" . youdao-dictionary-play-voice-at-point)))
+        ("d p" . youdao-dictionary-search-at-point-posframe)
+        ("d v" . youdao-dictionary-play-voice-at-point)))
+
 
 (use-package memory-usage
   :ensure t)

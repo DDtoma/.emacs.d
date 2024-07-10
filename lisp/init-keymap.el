@@ -23,7 +23,6 @@
 (define-key llight//global-map (kbd "f R") 'find-file-read-only)
 (define-key llight//global-map (kbd "f s") 'save-buffer)
 (define-key llight//global-map (kbd "f S") 'save-some-buffers)
-(define-key llight//global-map (kbd "d") 'dired)
 (define-key llight//global-map (kbd "w 1") 'delete-other-windows)
 (define-key llight//global-map (kbd "w 2") 'split-window-below)
 (define-key llight//global-map (kbd "w 3") 'split-window-right)

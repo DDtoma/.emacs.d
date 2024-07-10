@@ -6,6 +6,7 @@
   (:map llight//global-map
         ("o I" .  org-insert-link)
         ("o a" . org-agenda)
+        ("o ," . org-insert-structure-template)
         )
   :hook
   ((org-mode . (lambda ()
@@ -69,8 +70,6 @@ _p_rint
            "* %?\nEntered on %U\n %i\n %a")
           ("i" "Checkitem" checkitem (file+headline "~/Documents/Note/gtd.org" "ItemBox")
            "[ ] %?\n - [ ] Enter Item\n\n %U\n")))
-  ;; markdown backend
-  ;; (add-to-list 'org-export-backends 'md)
   ;; (setq org-agenda-time-grid (quote ((daily today require-timed)
   ;;                                    (300
   ;;                                     600
