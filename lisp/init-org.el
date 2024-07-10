@@ -10,14 +10,14 @@
   :hook
   ((org-mode . (lambda ()
                  "Beautify Org Checkbox Symbol"
-                 (push '("[ ]" . ?☐) prettify-symbols-alist)
-                 (push '("[X]" . ?☑) prettify-symbols-alist)
-                 (push '("[-]" . ?❍) prettify-symbols-alist)
-                 (push '("#+BEGIN_SRC" . ?✎) prettify-symbols-alist)
-                 (push '("#+END_SRC" . ?□) prettify-symbols-alist)
-                 (push '("#+BEGIN_QUOTE" . ?») prettify-symbols-alist)
-                 (push '("#+END_QUOTE" . ?«) prettify-symbols-alist)
-                 (push '("#+HEADERS" . ?☰) prettify-symbols-alist)
+                 ;; (push '("[ ]" . ?☐) prettify-symbols-alist)
+                 ;; (push '("[X]" . ?☑) prettify-symbols-alist)
+                 ;; (push '("[-]" . ?❍) prettify-symbols-alist)
+                 ;; (push '("#+BEGIN_SRC" . ?✎) prettify-symbols-alist)
+                 ;; (push '("#+END_SRC" . ?□) prettify-symbols-alist)
+                 ;; (push '("#+BEGIN_QUOTE" . ?») prettify-symbols-alist)
+                 ;; (push '("#+END_QUOTE" . ?«) prettify-symbols-alist)
+                 ;; (push '("#+HEADERS" . ?☰) prettify-symbols-alist)
                  (prettify-symbols-mode 1)))
    (org-indent-mode . (lambda()
                         (diminish 'org-indent-mode)
@@ -71,25 +71,70 @@ _p_rint
            "[ ] %?\n - [ ] Enter Item\n\n %U\n")))
   ;; markdown backend
   ;; (add-to-list 'org-export-backends 'md)
-  (setq org-agenda-time-grid (quote ((daily today require-timed)
-                                     (300
-                                      600
-                                      900
-                                      1200
-                                      1500
-                                      1800
-                                      2100
-                                      2400)
-                                     "......"
-                                     "----------------------------------------------------"
-                                     )))
+  ;; (setq org-agenda-time-grid (quote ((daily today require-timed)
+  ;;                                    (300
+  ;;                                     600
+  ;;                                     900
+  ;;                                     1200
+  ;;                                     1500
+  ;;                                     1800
+  ;;                                     2100
+  ;;                                     2400)
+  ;;                                    "......"
+  ;;                                    "----------------------------------------------------"
+  ;;                                    )))
   )
+
+(use-package org-modern
+  :ensure t
+  :after org
+  :init
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+
+  (setq
+   ;; Edit settings
+   org-auto-align-tags nil
+   org-tags-column 0
+   org-catch-invisible-edits 'show-and-error
+   org-special-ctrl-a/e t
+   org-insert-heading-respect-content t
+
+   ;; Org styling, hide markup etc.
+   org-hide-emphasis-markers t
+   org-pretty-entities t
+
+   ;; Agenda styling
+   org-agenda-tags-column 0
+   org-agenda-block-separator ?─
+   org-agenda-time-grid
+   '((daily today require-timed)
+     (300
+      600
+      900
+      1200
+      1500
+      1800
+      2100
+      2400)
+     " ┄┄┄┄┄ "
+     "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+   org-agenda-current-time-string
+   "◀── now ─────────────────────────────────────────────────")
+  )
+
+(use-package org-modern-indent
+  :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+  :init ; add late to hook
+  (add-hook 'org-mode-hook #'org-modern-indent-mode 90)
+)
 
 (use-package org-roam
   :ensure t
   ;; :custom
   ;; (setq org-roam-directory (file-truename "~/Documents/org-roam"))
-  :config  
+  :config
+  (setq org-roam-directory (file-truename "~/Documents/org-roam"))
   (setq find-file-visit-truename t)
   (setq org-roam-database-connector 'sqlite-builtin)
   (setq org-roam-mode-sections
