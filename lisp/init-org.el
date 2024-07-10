@@ -4,7 +4,9 @@
   ("C-c a" . org-agenda)
   ("C-c b" . org-switchb)
   (:map llight//global-map
-         ("o i l" .  org-insert-link))
+        ("o I" .  org-insert-link)
+        ("o a" . org-agenda)
+        )
   :hook
   ((org-mode . (lambda ()
                  "Beautify Org Checkbox Symbol"
@@ -49,7 +51,7 @@ _p_rint
 
   (global-set-key [f11] 'hydra-global-org/body)
 
-  (setq org-agenda-files '("~/Documents/Note")
+  (setq org-agenda-files '("~/Documents/Note" "~/Documents/org-roam/daily")
         org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)" "DELAY(D)"))
         org-todo-keyword-faces '(("HANGUP" . warning)
                                  ("❓" . warning))
@@ -85,17 +87,39 @@ _p_rint
 
 (use-package org-roam
   :ensure t
-  :after org
-  :config
-  (setq org-roam-directory (file-truename "~/Documents/org-roam"))
+  ;; :custom
+  ;; (setq org-roam-directory (file-truename "~/Documents/org-roam"))
+  :config  
   (setq find-file-visit-truename t)
   (setq org-roam-database-connector 'sqlite-builtin)
   (setq org-roam-mode-sections
       (list #'org-roam-backlinks-section
             #'org-roam-reflinks-section
             #'org-roam-unlinked-references-section))
-  :hook
-  (org-roam-mode . org-roam-db-autosync-mode)
+  (org-roam-db-autosync-mode)
+  (require 'org-roam-protocol)
+  (add-to-list 'org-agenda-files "")
+  :bind
+  (:map llight//global-map
+        ("o l" . org-roam-buffer-toggle)
+        ("o f" . org-roam-node-find)
+        ("o i" . org-roam-node-insert)
+        ("o c" . org-roam-capture)
+        ("o j" . org-roam-dailies-capture-today)
+        )
+  )
+
+(use-package org-roam-ui
+  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start nil)
+  :bind
+  (:map llight//global-map
+        (("o g" . org-roam-ui-open)))
   )
 
 
