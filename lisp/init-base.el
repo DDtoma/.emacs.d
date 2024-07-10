@@ -365,13 +365,13 @@
 
   ;; Setting tab size to 1, to insert tabs as delimiters
   (add-hook 'minibuffer-setup-hook
-	    (lambda ()
-	      (setq tab-width 1)))
+            (lambda ()
+              (setq tab-width 1)))
   :bind
   (:map llight//global-map
-	("b b" . ivy-switch-buffer)
-	("X" . ivy-resume)
-	))
+        ("b b" . ivy-switch-buffer)
+        ("X" . ivy-resume)
+        ))
 
 (use-package swiper
   :ensure t
