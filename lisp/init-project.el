@@ -83,7 +83,7 @@
   :ensure nil
   :bind
   (:map llight//global-map
-        :prefix-map layout
+        :prefix-map @layout
         :prefix "L"
         ("l" . tabspaces-switch-or-create-workspace)
         ("L" . tabspaces-restore-session)
@@ -95,7 +95,7 @@
         ("R" . tab-rename)
         ("TAB" . tab-bar-switch-to-recent-tab)
         ("r" . tabspaces-remove-current-buffer)
-        :prefix-map project
+        :prefix-map @project
         :prefix "p"
         ("f" . project-find-file)
         ("c" . project-switch-project)

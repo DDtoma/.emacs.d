@@ -35,12 +35,12 @@
   :after youdao-dictionary helpful avy
   :bind
   (:map llight//global-map
-        :prefix-map tools
+        :prefix-map @tools
         :prefix "t"
         ("p" . youdao-dictionary-search-at-point-posframe)
         ("v" . youdao-dictionary-play-voice-at-point)
         ("s" . web-search)
-        :prefix-map help
+        :prefix-map @help
         :prefix "h"
         ("p" . helpful-at-point)
         ("C" . helpful-callable)
@@ -49,7 +49,7 @@
         ("m" . helpful-macro)
         ("c" . helpful-command)
         ("k" . helpful-key)
-        :prefix-map jump
+        :prefix-map @jump
         :prefix "j"
         ("j" . avy-goto-char)
         ("l" . avy-goto-line)

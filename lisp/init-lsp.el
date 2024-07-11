@@ -61,7 +61,7 @@
         ("M-," . lsp-bridge-find-def-return)
         ("M-." . lsp-bridge-find-def)
         :map llight//global-map
-        :prefix-map lsp
+        :prefix-map @lsp
         :prefix "l"
         ("p" . lsp-bridge-avy-peek)
         ("r" . lsp-bridge-find-references))

@@ -152,7 +152,7 @@ _p_rint
   ("C-c o b" . org-switchb)
   ("C-c o c" . org-capture)
   (:map llight//global-map
-        :prefix-map org
+        :prefix-map @org
         :prefix "o"
         ("I" .  org-insert-link)
         ("a" . org-agenda)

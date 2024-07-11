@@ -21,21 +21,21 @@
   :bind
   (:map llight//global-map
         ("q q" . save-buffers-kill-terminal)
-        :prefix-map file
+        :prefix-map @file
         :prefix "f"
         ("f" . find-file)
         ("R" . find-file-read-only)
         ("r" . consult-recent-file)
         ("s" . save-buffer)
         ("S" . save-some-buffers)
-        :prefix-map window
+        :prefix-map @window
         :prefix "w"
         ("1" . delete-other-windows)
         ("2 "  . split-window-below)
         ("3 "  . split-window-right)
         ("k "  . kill-buffer-and-window)
         ("e "  . eval-last-sexp)
-        :prefix-map buffer
+        :prefix-map @buffer
         :prefix "b"
         ("k" . kill-this-buffer)
         ("K" . kill-some-buffers)
