@@ -24,7 +24,10 @@ persistent-scratch/
 eln-cache/
 straight/
 ds-pinyin/
+tree-sitter/
 
+tabsession.el
+projects
 .DS_Store
 custom.el
 recentf

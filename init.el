@@ -50,6 +50,7 @@
 ;; Completion
 (require 'init-completion)
 (require 'init-lsp)
+(require 'init-project)
 ;; (require 'init-nox)
 
 ;; Tools
@@ -59,6 +60,7 @@
 
 ;; Language
 (require 'init-c)
+(require 'init-xml)
 ;; (require 'init-java)
 (require 'init-python)
 ;; (require 'init-json)

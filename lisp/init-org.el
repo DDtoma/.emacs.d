@@ -1,13 +1,5 @@
 (use-package org
   :ensure nil
-  :bind
-  ("C-c a" . org-agenda)
-  ("C-c b" . org-switchb)
-  (:map llight//global-map
-        ("o I" .  org-insert-link)
-        ("o a" . org-agenda)
-        ("o ," . org-insert-structure-template)
-        )
   :hook
   ((org-mode . (lambda ()
                  "Beautify Org Checkbox Symbol"
@@ -122,11 +114,10 @@ _p_rint
    "◀── now ─────────────────────────────────────────────────")
   )
 
-(use-package org-modern-indent
-  :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
-  :init ; add late to hook
-  (add-hook 'org-mode-hook #'org-modern-indent-mode 90)
-)
+;; (use-package org-modern-indent
+;;   :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+;;   :init ; add late to hook
+;;   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
 (use-package org-roam
   :ensure t
@@ -143,14 +134,6 @@ _p_rint
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol)
   (add-to-list 'org-agenda-files "")
-  :bind
-  (:map llight//global-map
-        ("o l" . org-roam-buffer-toggle)
-        ("o f" . org-roam-node-find)
-        ("o i" . org-roam-node-insert)
-        ("o c" . org-roam-capture)
-        ("o j" . org-roam-dailies-capture-today)
-        )
   )
 
 (use-package org-roam-ui
@@ -160,11 +143,27 @@ _p_rint
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil)
-  :bind
-  (:map llight//global-map
-        (("o g" . org-roam-ui-open)))
-  )
+        org-roam-ui-open-on-start nil))
 
+(use-package llight//org-keymap
+  :ensure nil
+  :bind
+  ("C-c o a" . org-agenda)
+  ("C-c o b" . org-switchb)
+  ("C-c o c" . org-capture)
+  (:map llight//global-map
+        :prefix-map org
+        :prefix "o"
+        ("I" .  org-insert-link)
+        ("a" . org-agenda)
+        ("," . org-insert-structure-template)
+        ("l" . org-roam-buffer-toggle)
+        ("f" . org-roam-node-find)
+        ("i" . org-roam-node-insert)
+        ("c" . org-roam-capture)
+        ("j" . org-roam-dailies-capture-today)
+        ("o" . org-roam-ui-open)
+        )
+  )
 
 (provide 'init-org)

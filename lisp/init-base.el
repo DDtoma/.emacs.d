@@ -160,6 +160,22 @@
     (setq-local my/isearch--direction 'backward))
   )
 
+(use-package dired
+  :ensure nil
+  :custom
+  (dired-kill-when-opening-new-dired-buffer t)
+  :config
+  ;; dired - reuse current buffer by pressing 'a'
+  (put 'dired-find-alternate-file 'disabled nil)
+  ;; always delete and copy recursively
+  (setq dired-recursive-deletes 'always)
+  (setq dired-recursive-copies 'always)
+  ;; if there is a dired buffer displayed in the next window, use its
+  ;; current subdir, instead of the current subdir of this dired buffer
+  (setq dired-dwim-target t)
+  ;; enable some really cool extensions like C-x C-j(dired-jump)
+  (require 'dired-x))
+
 (use-package awesome-pair
   :defer nil
   ;; :quelpa ((awesome-pair :fetcher github :repo "manateelazycat/awesome-pair") :upgrade nil)
@@ -312,23 +328,6 @@
   (delete-selection-mode -1)
   )
 
-(use-package dired
-  :ensure nil
-  :custom
-  (dired-kill-when-opening-new-dired-buffer t)
-  :config
-  ;; dired - reuse current buffer by pressing 'a'
-  (put 'dired-find-alternate-file 'disabled nil)
-  ;; always delete and copy recursively
-  (setq dired-recursive-deletes 'always)
-  (setq dired-recursive-copies 'always)
-  ;; if there is a dired buffer displayed in the next window, use its
-  ;; current subdir, instead of the current subdir of this dired buffer
-  (setq dired-dwim-target t)
-  ;; enable some really cool extensions like C-x C-j(dired-jump)
-  (require 'dired-x))
-
-
 (use-package ace-window
   :ensure t
   :init
@@ -337,56 +336,13 @@
   (:map llight//global-map
         ("w w" . ace-window)))
 
-;; (use-package dired-single
-;;     :ensure t
-;;     :init
-;;     (defun my-dired-init ()
-;;       (define-key dired-mode-map [return] 'dired-single-buffer)
-;;       (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
-;;       (define-key dired-mode-map "^" 'dired-single-up-directory))
-;;     :hook
-;;     (dired-mode . my-dired-init))
-
-(use-package ivy
-  :ensure t
-  :init
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
-
-(use-package ivy-rich
-  :ensure t
-  :after ivy
-  :init
-  (ivy-rich-mode 1)
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  ;; For better performance
-  (setq ivy-rich-parse-remote-buffer nil)
-
-  ;; Setting tab size to 1, to insert tabs as delimiters
-  (add-hook 'minibuffer-setup-hook
-            (lambda ()
-              (setq tab-width 1)))
-  :bind
-  (:map llight//global-map
-        ("b b" . ivy-switch-buffer)
-        ("X" . ivy-resume)
-        ))
-
-(use-package swiper
-  :ensure t
-  :after ivy
-  :bind
-  (("\C-s" . swiper)))
-
 (use-package projectile
   :ensure t
-  :after ivy
-  :init
-  (setq projectile-completion-system 'ivy)
   :config
-;;  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (projectile-mode +1))
+  (projectile-mode))
+
+(use-package consult-projectile
+  :ensure t)
 
 (use-package ibuffer-projectile
   :ensure t
@@ -407,63 +363,6 @@
                (ibuffer-projectile-set-filter-groups)
                (unless (eq ibuffer-sorting-mode 'alphabetic)
                  (ibuffer-do-sort-by-alphabetic)))))
-
-;; 新手教程https://github.com/condy0919/emacs-newbie/blob/master/introduction-to-ivy.md
-(use-package counsel
-  :ensure t
-  :init
-  (when (commandp 'counsel-M-x)
-    (global-set-key [remap execute-extended-command] #'counsel-M-x))
-  :config
-  ;; 设置补全方式
-  ;; ivy--regex
-  ;; ivy--regex-plus
-  ;; ivy--regex-ignore-order
-  ;; ivy--regex-fuzzy
-  ;; regexp-quote
-  (setq ivy-re-builders-alist '((t . ivy--regex-plus)))
-  ;; 修改初始化输入，去掉开头的^
-  (ivy-configure 'counsel-M-x
-    :initial-input ""
-    :display-transformer-fn #'counsel-M-x-transformer)
-  ;; 增加自己的 ivy action
-  (ivy-set-actions
-   'counsel-find-file
-   '(("d" delete-file "delete")
-     ("r" rename-file "rename")
-     ("x" counsel-find-file-as-root "open as root")))
-  :bind
-  ("M-x" . counsel-M-x)
-  ("C-x C-f" . counsel-find-file)
-  ("M-y" . counsel-yank-pop)
-  (:map llight//global-map
-        ("s f" . counsel-fzf)
-        ("s a" . counsel-ag)
-        ("s r" . counsel-rg)
-        ("s k" . counsel-ack)
-        ("s c" . counsel-cd)
-        ("s K" . counsel-describes)
-        ("s e" . counsel-minor)
-        ("s i" . counsel-imenu)
-        ("f r" . counsel-recentf)
-        ("f b" . counsel-bookmark)
-        ("f f" . counsel-find-file)
-        ("x" . counsel-M-x)
-        )
-  )
-
-(use-package counsel-projectile
-  :ensure t
-  :after counsel projectile
-  :init
-  (counsel-projectile-mode +1)
-  :bind
-  (:map llight//global-map
-        ("p f" . counsel-projectile-find-file)
-        ("p d" . counsel-projectile-find-dir)
-        ("p c" . counsel-projectile-switch-project)
-        ("p s a" . counsel-projectile-ag)
-        ("p s g" . counsel-projectile-grep)))
 
 (use-package diminish
   :ensure t)

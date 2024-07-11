@@ -17,6 +17,10 @@
 (use-package python
   :ensure nil
   :hook
-  (python-mode . (lambda () (poetry-venv-workon) (lsp-bridge-mode 1))))
+  (python-mode . (lambda () (poetry-venv-workon) (lsp-bridge-mode 1)))
+  ;; 使用tree-siter后python-mode会被映射到python-ts-mode
+  (python-ts-mode . (lambda () (poetry-venv-workon) (lsp-bridge-mode 1)))
+  )
+
 
 (provide 'init-python)
