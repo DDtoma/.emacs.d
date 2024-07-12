@@ -220,6 +220,16 @@ value of the selected COLOR."
   (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
   )
 
+(use-package nerd-icons-completion
+  :ensure t
+  :when (icons-displayable-p)
+  :after marginalia
+  :hook (vertico-mode . nerd-icons-completion-mode)
+  :config
+  (nerd-icons-completion-mode)
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
+  )
+
 (use-package embark
   :ensure t
   :bind (("s-."   . embark-act)

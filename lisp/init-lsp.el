@@ -55,7 +55,10 @@
 (use-package llight//lsp-keymap
   :ensure nil
   :bind
-  (:map markdown-mode-map
+  (:map lsp-bridge-mode-map
+        ("M-N" . lsp-bridge-diagnostic-jump-next)
+        ("M-P" . lsp-bridge-diagnostic-jump-prev)
+   :map markdown-mode-map
         ("C-c C-e" . markdown-do)
         :map lsp-bridge-mode-map
         ("M-," . lsp-bridge-find-def-return)
@@ -64,7 +67,8 @@
         :prefix-map @lsp
         :prefix "l"
         ("p" . lsp-bridge-avy-peek)
-        ("r" . lsp-bridge-find-references))
-  )
+        ("r" . lsp-bridge-find-references)
+        ("e" . lsp-bridge-diagnostic-list)
+        ))
 
 (provide 'init-lsp)

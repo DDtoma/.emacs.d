@@ -32,7 +32,17 @@
 
 (use-package llight//tools-keymap
   :ensure nil
-  :after youdao-dictionary helpful avy
+  ;; :after youdao-dictionary helpful avy
+  :autoload (
+             web-search
+             helpful-at-point
+             helpful-variable
+             helpful-function
+             helpful-key
+             helpful-command
+             avy-goto-char
+             avy-goto-line
+             )
   :bind
   (:map llight//global-map
         :prefix-map @tools

@@ -43,6 +43,14 @@
   (>= emacs-major-version 27)
   "Emacs is 27 or above.")
 
+(defconst emacs/>=29p
+  (>= emacs-major-version 29)
+  "Emacs is 29 or above.")
+
+(defconst emacs/>=30p
+  (>= emacs-major-version 30)
+  "Emacs is 30 or above.")
+
 (defconst emacs/>=25.3p
   (or emacs/>=26p
       (and (= emacs-major-version 25) (>= emacs-minor-version 3)))
@@ -52,5 +60,15 @@
   (or emacs/>=26p
       (and (= emacs-major-version 25) (>= emacs-minor-version 2)))
   "Emacs is 25.2 or above.")
+
+(defconst llight-custom-example-file
+  (expand-file-name "custom-example.el" user-emacs-directory)
+  "Custom example file of Centaur Emacs.")
+
+(defconst llight-custom-post-file
+  (expand-file-name "custom-post.el" user-emacs-directory)
+  "Custom file after startup.
+
+Put private configurations to override defaults here.")
 
 (provide 'init-const)

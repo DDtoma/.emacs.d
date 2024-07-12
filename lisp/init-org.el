@@ -1,5 +1,6 @@
 (use-package org
   :ensure nil
+  :defer nil
   :hook
   ((org-mode . (lambda ()
                  "Beautify Org Checkbox Symbol"
@@ -114,17 +115,18 @@ _p_rint
    "◀── now ─────────────────────────────────────────────────")
   )
 
-;; (use-package org-modern-indent
-;;   :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
-;;   :init ; add late to hook
-;;   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
+(use-package org-modern-indent
+  :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+  :init ; add late to hook
+  (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
 (use-package org-roam
   :ensure t
+  :defer nil
   ;; :custom
   ;; (setq org-roam-directory (file-truename "~/Documents/org-roam"))
   :config
-  (setq org-roam-directory (file-truename "~/Documents/org-roam"))
+  (setq org-roam-directory (file-truename "~/Documents/org-roam/"))
   (setq find-file-visit-truename t)
   (setq org-roam-database-connector 'sqlite-builtin)
   (setq org-roam-mode-sections
@@ -133,7 +135,13 @@ _p_rint
             #'org-roam-unlinked-references-section))
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol)
-  (add-to-list 'org-agenda-files "")
+
+  ;; todo: 编写一个函数将当天前5天和后三天的daily文件加入agenda当中
+  ;; (add-to-list 'org-agenda-files "")
+  ;; (setq org-roam-daily-path (concat org-roam-directory "daily"))
+  ;; (calendar-current-date)
+  ;; (directory-files org-roam-daily-path t "2024-07-.*\.org")
+
   )
 
 (use-package org-roam-ui
@@ -147,6 +155,14 @@ _p_rint
 
 (use-package llight//org-keymap
   :ensure nil
+  :autoload (org-agenda
+             org-roam-capture
+             org-roam-node-find
+             org-roam-node-insert
+             org-roam-dailies-capture-today
+             org-roam-dailies-goto-today
+             org-roam-ui-open
+             )
   :bind
   ("C-c o a" . org-agenda)
   ("C-c o b" . org-switchb)
@@ -162,6 +178,7 @@ _p_rint
         ("i" . org-roam-node-insert)
         ("c" . org-roam-capture)
         ("j" . org-roam-dailies-capture-today)
+        ("t" . org-roam-dailies-goto-today)
         ("o" . org-roam-ui-open)
         )
   )

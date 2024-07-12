@@ -1,57 +1,42 @@
-;; config use-package
-(require 'package)
-(setq package-archives '(("melpa"   . "https://melpa.org/packages/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(when (version< emacs-version "27.1")
+  (error "This requires Emacs 27.1 and above!"))
 
-(package-initialize)
+;; Load path
+;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
+(defun update-load-path (&rest _)
+  "Update `load-path'."
+  (dolist (dir '("site-lisp" "lisp"))
+    (push (expand-file-name dir user-emacs-directory) load-path)))
 
-(setq package-list '(use-package))
+(defun add-subdirs-to-load-path (&rest _)
+  "Add subdirectories to `load-path'.
 
-(unless package-archive-contents
-  (package-refresh-contents))
+Don't put large files in `site-lisp' directory, e.g. EAF.
+Otherwise the startup will be very slow."
+  (let ((default-directory (expand-file-name "site-lisp" user-emacs-directory)))
+    (normal-top-level-add-subdirs-to-load-path)))
 
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(advice-add #'package-initialize :after #'update-load-path)
+(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
-;; init straight
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
-            user-emacs-directory)))
-      (bootstrap-version 7))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://radian-software.github.io/straight.el/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-
-(add-to-list 'load-path "~/.emacs.d/lisp")
-
-(eval-when-compile
-  (require 'use-package))
+(update-load-path)
 
 ;; Base
 (require 'init-const)
+(require 'init-custom)
 (require 'init-env)
 (require 'init-func)
+(require 'init-package)
 (require 'init-base)
-(require 'init-org)
+
 (require 'init-edit)
+(require 'init-org)
 (require 'init-ui)
 
-;; Completion
+;; project Completion
+(require 'init-project)
 (require 'init-completion)
 (require 'init-lsp)
-(require 'init-project)
-;; (require 'init-nox)
 
 ;; Tools
 (require 'init-git)

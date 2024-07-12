@@ -1,6 +1,8 @@
 (eval-when-compile
   (require 'init-const)
-  (require 'init-func))
+  (require 'init-func)
+  (require 'init-custom)
+  )
 
 ;; set default font size
 ;; (set-face-attribute 'default nil :height 120)
@@ -32,6 +34,7 @@
 ;;(global-display-line-numbers-mode)
 (use-package display-line-numbers
   :ensure nil
+  :defer nil
   :hook
   (emacs-lisp-mode . display-line-numbers-mode)
   (python-mode . display-line-numbers-mode)
@@ -75,22 +78,21 @@
     )
   )
 
-;; (use-package awesome-tray
-;;   :quelpa (awesome-tray :fetcher github :repo "manateelazycat/awesome-tray")
+;; (use-package hl-line
 ;;   :ensure nil
+;;   :defer nil
+;;   :when llight-hl-active
 ;;   :if (display-graphic-p)
+;;   :hook ((after-init . global-hl-line-mode)
+;;          ((dashboard-mode eshell-mode shell-mode term-mode vterm-mode) .
+;;           (lambda () (setq-local global-hl-line-mode nil))))
 ;;   :config
-;;   (awesome-tray-mode 1))
-
-(use-package hl-line
-  :ensure nil
-  :if (display-graphic-p)
-  :hook (after-init . global-hl-line-mode))
+;;   (set-face-background hl-line-face "gray44")
+;;   )
 
 (use-package timu-caribbean-theme
   :ensure t
-  :config (load-theme 'timu-caribbean t))
-
-
+  :config (load-theme 'timu-caribbean t)
+  )
 
 (provide 'init-ui)

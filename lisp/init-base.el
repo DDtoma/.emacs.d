@@ -1,5 +1,6 @@
 (use-package emacs
   :ensure nil
+  :defer nil
   :init
   (setq inhibit-startup-screen t
         initial-scratch-message nil
@@ -40,6 +41,14 @@
   (setq tab-always-indent 'complete)
   )
 
+;; Prettify Symbols
+;; e.g. display “lambda” as “λ”
+(use-package prog-mode
+  :ensure nil
+  :hook (prog-mode . prettify-symbols-mode)
+  :init
+  (setq-default prettify-symbols-alist llight-prettify-symbols-alist)
+  (setq prettify-symbols-unprettify-at-point 'right-edge))
 
 (use-package recentf
   :ensure nil
@@ -113,7 +122,7 @@
    whitespace-style
    '(face             ; visualize things below:
      empty            ; empty lines at beginning/end of buffer
-     lines-tail       ; lines go beyond `fill-column'
+     ;; lines-tail       ; lines go beyond `fill-column'
      space-before-tab ; spaces before tab
      trailing         ; trailing blanks
      tabs             ; tabs (show by face)
@@ -176,195 +185,9 @@
   ;; enable some really cool extensions like C-x C-j(dired-jump)
   (require 'dired-x))
 
-(use-package awesome-pair
-  :defer nil
-  ;; :quelpa ((awesome-pair :fetcher github :repo "manateelazycat/awesome-pair") :upgrade nil)
-  :straight (awesome-pair :type git :host github :repo "manateelazycat/awesome-pair")
-  :hook
-  (emacs-lisp-mode . awesome-pair-mode)
-  (c-mode-common . awesome-pair-mode)
-  (c-mode . awesome-pair-mode)
-  (c++-mode . awesome-pair-mode)
-  (java-mode . awesome-pair-mode)
-  (haskell-mode . awesome-pair-mode)
-  (emacs-lisp-mode . awesome-pair-mode)
-  (lisp-interaction-mode . awesome-pair-mode)
-  (lisp-mode . awesome-pair-mode)
-  (maxima-mode . awesome-pair-mode)
-  (ielm-mode . awesome-pair-mode)
-  (sh-mode . awesome-pair-mode)
-  (makefile-gmake-mode . awesome-pair-mode)
-  (php-mode . awesome-pair-mode)
-  (python-mode . awesome-pair-mode)
-  (js-mode . awesome-pair-mode)
-  (go-mode . awesome-pair-mode)
-  (qml-mode . awesome-pair-mode)
-  (jade-mode . awesome-pair-mode)
-  (css-mode . awesome-pair-mode)
-  (ruby-mode . awesome-pair-mode)
-  (coffee-mode . awesome-pair-mode)
-  (rust-mode . awesome-pair-mode)
-  (qmake-mode . awesome-pair-mode)
-  (lua-mode . awesome-pair-mode)
-  (swift-mode . awesome-pair-mode)
-  (minibuffer-inactive-mode . awesome-pair-mode)
-  :bind
-  (:map awesome-pair-mode-map
-        ("(" . awesome-pair-open-round)
-        ("[" . awesome-pair-open-bracket)
-        ("{" . awesome-pair-open-curly)
-        (")" . awesome-pair-close-round)
-        ("]" . awesome-pair-close-bracket)
-        ("}" . awesome-pair-close-curly)
-        ("=" . awesome-pair-equal)
-        ("%" . awesome-pair-match-paren)
-        ("\"" . awesome-pair-double-quote)
-        ("S-SPC" . awesome-pair-space)
-        ("M-o" . awesome-pair-backward-delete)
-        ("C-d" . awesome-pair-forward-delete)
-        ("C-k" . awesome-pair-kill)
-        ("M-\"" . awesome-pair-wrap-double-quote)
-        ("M-[" . awesome-pair-wrap-bracket)
-        ("M-{" . awesome-pair-wrap-curly)
-        ("M-(" . awesome-pair-wrap-round)
-        ("M-)" . awesome-pair-unwrap)
-        ("M-p" . awesome-pair-jump-right)
-        ("M-n" . awesome-pair-jump-left)
-        ("M-:" . awesome-pair-jump-out-pair-and-newline))
-  )
-
-(use-package meow
-  :ensure t
-  :init
-  (meow-global-mode 1)
-  :config
-  (defun meow-setup ()
-    (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-    (meow-motion-overwrite-define-key
-      '("j" . meow-next)
-      '("k" . meow-prev))
-    (meow-leader-define-key
-      ;; SPC j/k will run the original command in MOTION state.
-      '("j" . "H-j")
-      '("k" . "H-k")
-      ;; Use SPC (0-9) for digit arguments.
-      '("1" . meow-digit-argument)
-      '("2" . meow-digit-argument)
-      '("3" . meow-digit-argument)
-      '("4" . meow-digit-argument)
-      '("5" . meow-digit-argument)
-      '("6" . meow-digit-argument)
-      '("7" . meow-digit-argument)
-      '("8" . meow-digit-argument)
-      '("9" . meow-digit-argument)
-      '("0" . meow-digit-argument)
-      '("/" . meow-keypad-describe-key)
-      '("?" . meow-cheatsheet))
-    (meow-normal-define-key
-      '("0" . meow-expand-0)
-      '("9" . meow-expand-9)
-      '("8" . meow-expand-8)
-      '("7" . meow-expand-7)
-      '("6" . meow-expand-6)
-      '("5" . meow-expand-5)
-      '("4" . meow-expand-4)
-      '("3" . meow-expand-3)
-      '("2" . meow-expand-2)
-      '("1" . meow-expand-1)
-      '("-" . negative-argument)
-      '(";" . meow-reverse)
-      '("," . meow-inner-of-thing)
-      '("." . meow-bounds-of-thing)
-      '("[" . meow-beginning-of-thing)
-      '("]" . meow-end-of-thing)
-      '("a" . meow-append)
-      '("A" . meow-open-below)
-      '("b" . meow-back-word)
-      '("B" . meow-back-symbol)
-      '("c" . meow-change)
-      '("d" . meow-delete)
-      '("D" . meow-backward-delete)
-      '("e" . meow-next-word)
-      '("E" . meow-next-symbol)
-      '("f" . meow-find)
-      '("g" . meow-cancel-selection)
-      '("G" . meow-grab)
-      '("h" . meow-left)
-      '("H" . meow-left-expand)
-      '("i" . meow-insert)
-      '("I" . meow-open-above)
-      '("j" . meow-next)
-      '("J" . meow-next-expand)
-      '("k" . meow-prev)
-      '("K" . meow-prev-expand)
-      '("l" . meow-right)
-      '("L" . meow-right-expand)
-      '("m" . meow-join)
-      '("n" . meow-search)
-      '("o" . meow-block)
-      '("O" . meow-to-block)
-      '("p" . meow-yank)
-      '("q" . meow-quit)
-      '("Q" . meow-goto-line)
-      '("r" . meow-replace)
-      '("R" . meow-swap-grab)
-      '("s" . meow-kill)
-      '("t" . meow-till)
-      '("u" . meow-undo)
-      '("U" . meow-undo-in-selection)
-      '("v" . meow-visit)
-      '("w" . meow-mark-word)
-      '("W" . meow-mark-symbol)
-      '("x" . meow-line)
-      '("X" . meow-goto-line)
-      '("y" . meow-save)
-      '("Y" . meow-sync-grab)
-      '("z" . meow-pop-selection)
-      '("'" . repeat)
-      '("<escape>" . mode-line-other-buffer)))
-  (meow-setup)
-  (meow-setup-line-number)
-  (meow-setup-indicator)
-  (delete-selection-mode -1)
-  )
-
-(use-package ace-window
-  :ensure t
-  :init
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind
-  (:map llight//global-map
-        ("w w" . ace-window)))
-
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode))
-
-(use-package consult-projectile
-  :ensure t)
-
-(use-package ibuffer-projectile
-  :ensure t
-  :after projectile
-  :config
-
-  (setq ibuffer-formats
-        '((mark modified read-only " "
-                (name 18 18 :left :elide)
-                " "
-                (size 9 -1 :right)
-                " "
-                (mode 16 16 :left :elide)
-                " "
-                project-relative-file)))
-  :hook
-  (ibuffer . (lambda ()
-               (ibuffer-projectile-set-filter-groups)
-               (unless (eq ibuffer-sorting-mode 'alphabetic)
-                 (ibuffer-do-sort-by-alphabetic)))))
-
-(use-package diminish
-  :ensure t)
+(use-package hl-line
+  :ensure nil
+  :if (display-graphic-p)
+  :hook (after-init . global-hl-line-mode))
 
 (provide 'init-base)
