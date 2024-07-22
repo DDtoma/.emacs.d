@@ -90,9 +90,10 @@
 ;;   (set-face-background hl-line-face "gray44")
 ;;   )
 
-(use-package timu-caribbean-theme
+(use-package ef-themes
   :ensure t
-  :config (load-theme 'timu-caribbean t)
+  :config
+  (load-theme 'ef-elea-light)
   )
 
 (provide 'init-ui)
