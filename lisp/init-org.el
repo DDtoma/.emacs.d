@@ -121,8 +121,8 @@ _p_rint
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
 (use-package org-roam
-  :ensure t
   :defer nil
+  :straight (org-roam :type git :host github :repo "org-roam/org-roam" :tag "v2.2.2")
   ;; :custom
   ;; (setq org-roam-directory (file-truename "~/Documents/org-roam"))
   :config
@@ -141,7 +141,6 @@ _p_rint
   ;; (setq org-roam-daily-path (concat org-roam-directory "daily"))
   ;; (calendar-current-date)
   ;; (directory-files org-roam-daily-path t "2024-07-.*\.org")
-
   )
 
 (use-package org-roam-ui
