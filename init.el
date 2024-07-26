@@ -45,7 +45,7 @@ Otherwise the startup will be very slow."
 
 ;; Language
 (require 'init-c)
-(require 'init-xml)
+(require 'init-web)
 ;; (require 'init-java)
 (require 'init-python)
 ;; (require 'init-json)
