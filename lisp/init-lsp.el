@@ -7,6 +7,7 @@
   :straight (popon :type git :url "https://codeberg.org/akib/emacs-popon.git"))
 
 (use-package lsp-bridge
+  :hook (lsp-bridge-mode . yas-minor-mode)
   :straight (lsp-bridge
             :type git
             :host github
@@ -15,8 +16,12 @@
             :build (:not compile))
   ;; :init (global-lsp-bridge-mode)
   :config
-  (setq acm-enable-capf t)
-  (setq acm-enable-quick-access t)
+  (setq acm-enable-capf t
+        acm-enable-quick-access t
+        acm-enable-tabnine nil
+        acm-backend-lsp-candidate-min-length 0
+        )
+
   (require 'avy)
   (defun lsp-bridge-avy-peek ()
     "Peek any symbol in the file by avy jump."
@@ -69,6 +74,7 @@
         ("p" . lsp-bridge-avy-peek)
         ("r" . lsp-bridge-find-references)
         ("e" . lsp-bridge-diagnostic-list)
+        ("i" . consult-imenu)
         ))
 
 (provide 'init-lsp)

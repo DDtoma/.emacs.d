@@ -25,8 +25,8 @@
   (python-ts-mode . (lambda () (poetry-venv-workon) (lsp-bridge-mode 1) (corfu-mode -1)))
   :bind
   (:map python-ts-mode-map
-        ("M ," . lsp-bridge-find-def-return)
-        ("M ." . lsp-bridge-find-def))
+        ("M-," . lsp-bridge-find-def-return)
+        ("M-." . lsp-bridge-find-def))
   )
 
 
