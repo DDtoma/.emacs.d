@@ -30,6 +30,20 @@
 (use-package avy
   :ensure t)
 
+(use-package rime
+  :custom
+  (default-input-method "rime")
+  :config
+  (setq rime-show-candidate 'posframe
+        rime-posframe-style 'simple
+        rime-show-preedit 'inline
+        )
+  ;; 临时英文模式
+  (setq rime-disable-predicates
+      '(rime-predicate-after-alphabet-char-p
+        rime-predicate-prog-in-code-p))
+  )
+
 (use-package llight//tools-keymap
   :ensure nil
   ;; :after youdao-dictionary helpful avy

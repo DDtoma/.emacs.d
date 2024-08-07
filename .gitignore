@@ -25,6 +25,7 @@ eln-cache/
 straight/
 ds-pinyin/
 tree-sitter/
+rime/
 
 tabsession.el
 projects
